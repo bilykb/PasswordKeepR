@@ -1,4 +1,5 @@
 INSERT INTO categories
-VALUES ('Work'),
+VALUES ('Business'),
 ('Entertainment'),
-('Social');
+('Social')
+('News');
