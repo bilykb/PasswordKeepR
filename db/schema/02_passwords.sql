@@ -6,8 +6,7 @@ CREATE TABLE passwords (
   url VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  category ,
-  note TEXT,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES reservations(id) ON DELETE CASCADE,
-  org_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
+  org_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE
 );
