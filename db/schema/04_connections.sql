@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS connections CASCADE;
+
+CREATE TABLE connections (
+  user_id INTEGER REFERENCES accounts(id) ON DELETE CASCADE NOT NULL,
+  organization_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE NOT NULL,
+  created DATETIME NOT NULL,
+  updated DATETIME NOT NULL,
+  admin_boolean BOOLEAN NOT NULL DEFAULT FALSE
+ );
