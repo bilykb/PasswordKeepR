@@ -6,6 +6,4 @@ CREATE TABLE accounts (
   main_password VARCHAR(255) NOT NULL,
   created DATETIME NOT NULL,
   organization_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
-  active BOOLEAN NOT NULL DEFAULT TRUE,
-  is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
