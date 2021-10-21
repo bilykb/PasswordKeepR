@@ -4,6 +4,7 @@ CREATE TABLE accounts (
   id SERIAL PRIMARY KEY NOT NULL,
   email VARCHAR(255) NOT NULL,
   main_password VARCHAR(255) NOT NULL,
-  created DATETIME NOT NULL,
   organization_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
+  created TIMESTAMP NOT NULL DEFAULT NOW(),
+  modified TIMESTAMP NOT NULL DEFAULT NOW()
 );

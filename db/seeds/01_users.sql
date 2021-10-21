@@ -1,3 +1,3 @@
--- Users table seeds here (Example)
-INSERT INTO users (name) VALUES ('Alice');
-INSERT INTO users (name) VALUES ('Kira');
+-- seed data for 01_accounts.sql
+
+INSERT INTO accounts (email, main_password) VALUES ('Alice');

@@ -8,5 +8,7 @@ CREATE TABLE passwords (
   password VARCHAR(255) NOT NULL,
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES reservations(id) ON DELETE CASCADE,
-  org_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE
+  org_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
+  created TIMESTAMP NOT NULL DEFAULT NOW(),
+  modified TIMESTAMP NOT NULL DEFAULT NOW()
 );
