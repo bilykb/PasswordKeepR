@@ -28,10 +28,12 @@ module.exports = (db) => {
       .then((res) => res.rows[0])
       .catch((err) => console.log(err));
 
-    if (!bcrypt.compareSync(email, currentUser.password)) {
+    if (!bcrypt.compareSync(email, currentUser.main_password)) {
       res.status(400).redirect("/login");
       return;
     }
+
+    res.status(400).redirect("/passwords");
   });
 
   // logout
