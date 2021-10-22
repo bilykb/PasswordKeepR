@@ -19,14 +19,14 @@ module.exports = (db) => {
     const queryText = `
       SELECT * FROM accounts
       WHERE email = $1
-      AND password = $2
     `;
 
     const values = [email, password];
 
-    db.query(queryText, values)
-      .then((res) => res.send(res.rows))
-      .catch((err) => res.send(err));
+    const currentUser = db
+      .query(queryText, values)
+      .then((res) => res.rows[0])
+      .catch((err) => console.log(err));
   });
 
   // logout
