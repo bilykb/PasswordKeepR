@@ -1,3 +1,5 @@
-INSERT INTO organizations (name)
-VALUES ('Lighthouse Labs'),
-('Micky Mouse Club');
+INSERT INTO categories (name)
+VALUES ('Business'),
+('Entertainment'),
+('Social')
+('News');
