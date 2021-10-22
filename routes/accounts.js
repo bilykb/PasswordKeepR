@@ -11,12 +11,11 @@ module.exports = (db) => {
 
   // get login form
   router.get('/login'), (req, res) => {
-
+    
   };
 
   // register a new user
   router.post('/register', (req, res) => {
-
   });
 
   // login (will need a login function)
