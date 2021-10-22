@@ -1,3 +1,3 @@
-INSERT INTO organizations (name, password);
+INSERT INTO organizations (name)
 VALUES ('Lighthouse Labs'),
 ('Micky Mouse Club');
