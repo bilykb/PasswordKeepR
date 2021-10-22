@@ -13,7 +13,21 @@ module.exports = (db) => {
   router.post("/register", (req, res) => {});
 
   // login (will need a login function)
-  router.post("/login", (req, res) => {});
+  router.post("/login", (req, res) => {
+    const { email, password } = req.body;
+
+    const queryText = `
+      SELECT * FROM accounts
+      WHERE email = $1
+      AND password = $2
+    `;
+
+    const values = [email, password];
+
+    db.query(queryText, values)
+      .then((res) => res.send(res.rows))
+      .catch((err) => res.send(err));
+  });
 
   // logout
   router.post("/logout", (req, res) => {});
