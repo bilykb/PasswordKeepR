@@ -27,6 +27,11 @@ module.exports = (db) => {
       .query(queryText, values)
       .then((res) => res.rows[0])
       .catch((err) => console.log(err));
+
+    if (!bcrypt.compareSync(email, currentUser.password)) {
+      res.status(400).redirect("/login");
+      return;
+    }
   });
 
   // logout
