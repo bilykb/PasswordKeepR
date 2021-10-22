@@ -12,16 +12,18 @@ const morgan = require("morgan");
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
-db.connect();
+db.connect().catch((err) => console.log(err));
 
 // cookie-session
-const cookieSession = require('cookie-session');
+const cookieSession = require("cookie-session");
 
-app.use(cookieSession({
-  name: "session",
-  keys: ["hello", "world"],
-  maxAge: 24 * 60 * 60 * 7000
-}))
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["hello", "world"],
+    maxAge: 24 * 60 * 60 * 7000,
+  })
+);
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -47,7 +49,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const accountRoutes = require("./routes/accounts");
-const passwordRoutes = require("./routes/passwords")
+const passwordRoutes = require("./routes/passwords");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own

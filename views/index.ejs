@@ -14,7 +14,47 @@
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <nav>
+    <span>
+      PocketPass
+    </span>
+    <span>
+      Keeping your business your *business*
+    </span>
+  </nav>
+
+  <form class="register_form" method="POST" action="/register">
+    <label for="name">Name</label>
+    <input type="name" type="name" name="name" placeholder="Name">
+    <label for="email">E-mail</label>
+    <input type="text" type="email" name="email" placeholder="E-mail">
+    <label for="password">Password</label>
+    <input type="text" type="password" name="password" placeholder="Password">
+    <button type="submit">Register</button>
+  </form>
+
+  <form class="login_form" method="POST" action="/login">
+    <label for="email">E-mail</label>
+    <input type="text" type="email" name="email" placeholder="E-mail">
+    <label for="password">Password</label>
+    <input type="text" type="password" name="password" placeholder="Password">
+    <button type="submit">Log In</button>
+  </form>
+
+
+  <div class="personal_passwords_container">
+    <table>
+      <thead>
+       <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+       </tr>
+      </thead>
+    </table>
+  </div>
+
 </body>
 
 </html>
