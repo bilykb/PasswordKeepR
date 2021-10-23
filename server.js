@@ -20,8 +20,8 @@ const cookieSession = require('cookie-session');
 app.use(cookieSession({
   name: "session",
   keys: ["hello", "world"],
-  maxAge: 24 * 60 * 60 * 7000
-}))
+  maxAge: 24 * 60 * 60 * 1000
+}));
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
