@@ -27,3 +27,11 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+
+#passwords-container {
+  width: 100vh;
+  margin-top: 3em;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
