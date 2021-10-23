@@ -13,8 +13,77 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 
-<body>
-  <h1>Have fun! 🥔</h1>
+<body style="display: flex; flex-direction: column">
+   <!-- LOG IN CONTAINER BEGIN -->
+
+   <div id="login_container">
+    <form class="login_form" method="POST" action="/api/login">
+      <label for="email">E-mail</label>
+      <input type="email" name="email" placeholder="E-mail" />
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+  <!-- LOG IN CONTAINER END -->
+
+  <!-- PASSWORDS CONTAINER BEGIN -->
+  <div id="passwords_container" style="width: 100%; height: 100%; display: none"
+  >
+    <h2>Your personal passwords</h2>
+    <div class="personal_passwords_container">
+      <table width="100%" style="padding: 10px; border: 1px solid black">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody class="list_of_passwords">
+          <tr>
+            <td id="password_name">netflix.com</td>
+            <td id="password_category">Film & Entertainment</td>
+            <td id="password_edit_btn">
+              <form action="POST" action="/passwords/:id/edit">
+                <button type="submit">Edit</button>
+              </form>
+            </td>
+            <td id="password_delete_btn">
+              <form action="POST" action="/passwords/:id">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Your organization's passwords</h2>
+  </div>
+
+  <!-- PASSWORDS CONTAINER END -->
+
+  <style>
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: white;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .passwords_container {
+      display: none;
+    }
+
+    .personal_passwords_container {
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+
 </body>
 
 </html>
