@@ -1,127 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Home Page</title>
 
-<head>
-  <title>Home Page</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
 
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
+  <body>
+    <%- include('partials/_header') %>
 
-<body style="display: flex; flex-direction: column">
+    <!-- PASSWORDS CONTAINER BEGIN -->
+    <div
+      id="passwords_container"
+      style="width: 100%; height: 100%; display: none"
+    >
+      <h2>Your personal passwords</h2>
+      <div class="personal_passwords_container">
+        <table width="100%" style="padding: 10px; border: 1px solid black">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody class="list_of_passwords">
+            <tr>
+              <td id="password_name">netflix.com</td>
+              <td id="password_category">Film & Entertainment</td>
+              <td id="password_edit_btn">
+                <form action="POST" action="/passwords/:id/edit">
+                  <button type="submit">Edit</button>
+                </form>
+              </td>
+              <td id="password_delete_btn">
+                <form action="POST" action="/passwords/:id">
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <!-- PERSONAL PASSWORDS END -->
 
-<nav>
-  <h4>Shenanigans</h4>
-  <form class="logout_form" method="POST" action="/logout">
-    <button class="logout_btn btn btn-secondary">Log Out</button>
-  </form>
- </nav>
+      <!-- ORGANIZATION PASSWORDS START -->
 
-   <!-- LOG IN CONTAINER BEGIN -->
-   <div id="login_container">
-    <form class="login_form" method="POST" action="/user/login">
-      <label for="email">E-mail</label>
-      <input type="email" name="email" placeholder="E-mail" />
-      <button type="submit">Log In</button>
-    </form>
-  </div>
-  <!-- LOG IN CONTAINER END -->
-
-  <!-- PASSWORDS CONTAINER BEGIN -->
-  <div id="passwords_container" style="width: 100%; height: 100%; display: none"
-  >
-    <h2>Your personal passwords</h2>
-    <div class="personal_passwords_container">
-      <table width="100%" style="padding: 10px; border: 1px solid black">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody class="list_of_passwords">
-          <tr>
-            <td id="password_name">netflix.com</td>
-            <td id="password_category">Film & Entertainment</td>
-            <td id="password_edit_btn">
-              <form action="POST" action="/passwords/:id/edit">
-                <button type="submit">Edit</button>
-              </form>
-            </td>
-            <td id="password_delete_btn">
-              <form action="POST" action="/passwords/:id">
-                <button type="submit">Delete</button>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Your organization's passwords</h2>
+      <div class="organization_passwords_container">
+        <table width="100%" style="padding: 10px; border: 1px solid black">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody class="list_of_passwords">
+            <tr>
+              <td id="password_name">netflix.com</td>
+              <td id="password_category">Film & Entertainment</td>
+              <td id="view_btn">
+                <form action="POST" action="/passwords/:id">
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <!-- PERSONAL PASSWORDS END -->
-
-    <!-- ORGANIZATION PASSWORDS START -->
-
-    <h2>Your organization's passwords</h2>
-    <div class="organization_passwords_container">
-      <table width="100%" style="padding: 10px; border: 1px solid black">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody class="list_of_passwords">
-          <tr>
-            <td id="password_name">netflix.com</td>
-            <td id="password_category">Film & Entertainment</td>
-            <td id="view_btn">
-              <form action="POST" action="/passwords/:id">
-                <button type="submit">Delete</button>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- PASSWORDS CONTAINER END -->
-
-  <style>
-    nav {
-      position: fixed;
-      display: flex;
-      justify-content: space-between;
-      top: 0;
-      left: 0;
-      background-color: white;
-      width: 100%;
-      padding: 10px;
-    }
-
-    .passwords_container {
-      display: none;
-    }
-
-    .personal_passwords_container {
-      width: 100%;
-      text-align: left;
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
-
-</body>
-
+    <!-- PASSWORDS CONTAINER END -->
+  </body>
 </html>
