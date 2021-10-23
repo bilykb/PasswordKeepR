@@ -19,11 +19,6 @@ module.exports = (db) => {
 
   });
 
-  //Get create a new password form
-  router.get('/passwords/id/:edit', (req, res) => {
-
-  });
-
   //Update a password
   router.post('passwords/:id', (req, res) => {
 
