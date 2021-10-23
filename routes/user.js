@@ -10,9 +10,9 @@ module.exports = (db) => {
     // res.render('index');
   };
 
-
   router.post("/login", (req, res) => {
     const { email } = req.body;
+    console.log(req.body);
 
     //If it's an empty field redirect to same page
     if (!email) {
@@ -22,23 +22,23 @@ module.exports = (db) => {
 
     //Get id from email input to set a cookie
     const queryText = `
-      SELECT id FROM accounts
+      SELECT * FROM accounts
       WHERE email = $1;
     `;
-
     const queryParams = [email];
 
     return db
       .query(queryText, queryParams)
-      .then((response) => {
+      .then((account) => {
         //If it returns an empty array (no user exists)
-        if (response.rows.length === 0) {
+        if (account.rows.length === 0) {
           res.status(400).redirect("/");
           return;
         }
         //Set cookie to user id retrieved from db
-        req.session["user_id"] = response.rows[0].id;
-        res.status(200).redirect("/passwords");
+        req.session["user_id"] = account.rows[0].id;
+        // res.status(200).redirect("/passwords");
+        console.log(account)
       })
       .catch((err) => console.log(err));
   });

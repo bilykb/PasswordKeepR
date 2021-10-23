@@ -2,11 +2,19 @@
 
 //Log in form config
 $(() => {
+  const $loginContainer = $("#login_container");
+  const $passwordsContainer = $("#passwords_container");
+
+  $.get('/user/login', function(user) {
+    if (!user) {
+      return
+    }
+
+  })
+
   $(".login_form").on("submit", function (e) {
     e.preventDefault();
 
-    const $loginContainer = $("#login_container");
-    const $passwordsContainer = $("#passwords_container");
     $loginContainer.hide();
     $passwordsContainer.show();
 
