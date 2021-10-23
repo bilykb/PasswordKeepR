@@ -18,7 +18,6 @@ $(() => {
     const $formData = $(this).serialize();
     $.post('/user/login', $formData)
     .then(accountJSON => {
-      console.log('ajax post json.....', accountJSON) // console.log debug here
       if (!accountJSON) {
         console.error('Account does not exist')
         return
