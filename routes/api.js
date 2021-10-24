@@ -25,7 +25,7 @@ module.exports = (db) => {
     FROM passwords
     JOIN categories ON passwords.category_id = categories.id
     JOIN accounts ON passwords.user_id = accounts.id
-    WHERE passwords.user_id = 1
+    WHERE passwords.user_id = $1
     AND passwords.org_id IS NULL
     ORDER BY $2;
     `, [userCookieId, orderByOption])
