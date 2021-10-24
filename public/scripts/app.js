@@ -8,7 +8,7 @@ $(() => {
     const $formFields = $container.find("input, select");
 
     //This request will be modularized later on
-    $.get('/api/passwords', (data) => {
+    $.post('/api/passwords', (data) => {
       console.log(data)
     })
 
