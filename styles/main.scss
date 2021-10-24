@@ -43,6 +43,14 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   padding: 2em;
+
+  tbody tr {
+    border-top: 1px solid rgb(99, 99, 99);
+    border-bottom: 1px solid rgb(99, 99, 99);
+    td {
+      padding: 1em 0
+    }
+  }
 }
 
 #visit_website a {
