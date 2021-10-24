@@ -32,10 +32,10 @@
   <body>
     <%- include('partials/_header') %>
 
-    <!-- PASSWORDS CONTAINER BEGIN -->
+    <!-- CONTENT WRAPPER BEGIN -->
     <div class="content-wrapper">
 
-
+      <!-- CREATE NEW PASSWORD FORM -->
       <div class="create_new_password_container">
         <h2>Create a new password</h2>
         <form method="POST" action="/">
@@ -61,6 +61,8 @@
         </form>
       </div>
 
+
+      <!-- EDIT EXISTING PASSWORD FORM -->
       <div class="edit_password_container">
         <h2>Edit your password</h2>
         <form method="POST" action="/">
@@ -91,7 +93,7 @@
       <div class="personal_passwords_container">
         <h2>Your personal passwords</h2>
         <% if (passwords) { %>
-        <table width="100%" style="padding: 10px; border: 1px solid black">
+        <table width="100%">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -135,7 +137,7 @@
       <div class="organization_passwords_container">
         <h2>Your organization's passwords</h2>
         <% if (passwords) { %>
-        <table width="100%" style="padding: 10px; border: 1px solid black">
+        <table width="100%">
           <thead>
             <tr>
               <th scope="col">Name</th>
