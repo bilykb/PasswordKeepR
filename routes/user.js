@@ -38,7 +38,7 @@ module.exports = (db) => {
 
   // logout
   router.post("/logout", (req, res) => {
-    res.clearCookie("session");
+    res.status(200).clearCookie("session");
     res.redirect('/user/login');
   });
 
