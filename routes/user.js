@@ -1,3 +1,4 @@
+const cookie = require('cookie-signature');
 const express = require("express");
 const router = express.Router();
 
@@ -38,8 +39,9 @@ module.exports = (db) => {
 
   // logout
   router.post("/logout", (req, res) => {
-    res.status(200).clearCookie("session");
-    res.redirect('/user/login');
+    const currentCookie = req.session.user_id;
+    req.session = null;
+    res.status(200).redirect('/user/login');
   });
 
   return router;
