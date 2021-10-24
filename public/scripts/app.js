@@ -1,8 +1,18 @@
 // // Client facing scripts here
 
 $(() => {
-  $(".edit_btn").on("click", function() {
+
+
+
+  //Show edit passwords container on click
+  $(".edit_btn").on("click", function(e) {
     $(".edit_password_container").fadeIn(200);
+  })
+
+  //Close edit form when cancel button is clicked
+  $(".cancel_btn").on("click", function() {
+    //Reset to hidden state
+    $($(this).parents()[2]).fadeOut(200);
   })
 })
 
