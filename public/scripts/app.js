@@ -1,12 +1,21 @@
-// // Client facing scripts here
-
 $(() => {
 
+  // EDIT PASSWORDS CLICK HANDLERS
 
-
-  //Show edit passwords container on click
   $(".edit_btn").on("click", function(e) {
-    $(".edit_password_container").fadeIn(200);
+    const $container =  $(".edit_password_container");
+    $container.fadeIn(200);
+    const $formFields = $container.find("input, select");
+
+    //This request will be modularized later on
+    $.get('/api/passwords', (data) => {
+      console.log(data)
+    })
+
+
+    $formFields.each((i, field) => {
+      $(field).val('this will be the current value');
+    })
   })
 
   //Close edit form when cancel button is clicked
@@ -16,17 +25,3 @@ $(() => {
   })
 })
 
-
-// //Log in form config
-// $(() => {
-//   // const $loginContainer = $("#login_container");
-//   // const $passwordsContainer = $("#passwords_container");
-
-//   // $.get('/user/login', function(user) {
-//   //   if (!user) {
-//   //     return
-//   //   }
-
-//   // })
-
-// });
