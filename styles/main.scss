@@ -51,6 +51,25 @@ nav {
       padding: 1em 0
     }
   }
+
+  .create_new_password  {
+    border: 0px;
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 2em;
+    background: linear-gradient(#7C99FF, #41CB99);
+    box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.3);
+    transition: 500ms ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 }
 
 #visit_website a {
