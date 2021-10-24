@@ -1,8 +1,14 @@
 <nav>
   <h4>Shenanigans</h4>
-  <form class="logout_form" method="POST" action="/user/logout">
-    <button class="logout_btn btn btn-secondary" class="btn btn-secondary">
-      Log Out
-    </button>
-  </form>
+  <div class="nav_right">
+    <% if (passwords) { %>
+      <span><%=passwords[0].email%></span>
+    <% } %>
+
+    <form style="display: inline; margin-left: 1em" class="logout_form" method="POST" action="/user/logout">
+      <button class="logout_btn btn btn-secondary" class="btn btn-secondary">
+        Log Out
+      </button>
+    </form>
+  </div>
 </nav>
