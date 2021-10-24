@@ -42,7 +42,8 @@ module.exports = (db) => {
   router.get("/passwords/new", (req, res) => {});
 
   //Create a new password
-  router.post("/passwords", (req, res) => {});
+  router.post("/passwords", (req, res) => {
+  });
 
   //Update a password
   router.post("passwords/:id", (req, res) => {});
