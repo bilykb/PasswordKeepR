@@ -7,6 +7,11 @@ module.exports = (db) => {
   router.get("/passwords", (req, res) => {
     const userCookieId = req.session.user_id;
 
+    if (!req.session.user_id) {
+      res.redirect('/user/login');
+      return;
+    }
+
     db.query(
       `
       SELECT accounts.email AS email,
