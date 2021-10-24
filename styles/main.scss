@@ -60,6 +60,9 @@ nav {
 }
 
 .create_new_password_container, .edit_password_container {
+  transition: 500ms ease;
+  opacity: 0;
+  transform: translateX(100%);
   background-color: white;
   height: 100vh;
   width: 30rem;
@@ -81,5 +84,10 @@ nav {
       align-self: flex-end;
     }
   }
+}
 
+.in_view {
+  transition: 500ms ease;
+  opacity: 1;
+  transform: translateX(0%);
 }
