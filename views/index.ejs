@@ -1,127 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Home Page</title>
 
-<head>
-  <title>Home Page</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
 
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-<body style="display: flex; flex-direction: column">
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <%- include('partials/_header') %>
 
 
-<nav>
-  <h4>Shenanigans</h4>
-  <form class="logout_form" method="POST" action="/logout">
-    <button class="logout_btn btn btn-secondary">Log Out</button>
-  </form>
- </nav>
 
-   <!-- LOG IN CONTAINER BEGIN -->
-   <div id="login_container">
-    <form class="login_form" method="POST" action="/user/login">
-      <label for="email">E-mail</label>
-      <input type="email" name="email" placeholder="E-mail" />
-      <button type="submit">Log In</button>
-    </form>
-  </div>
-  <!-- LOG IN CONTAINER END -->
+    <!-- PASSWORDS CONTAINER BEGIN -->
+    <div id="passwords_container">
+      <div class="personal_passwords_container">
+        <h2>Your personal passwords</h2>
+        <% if (passwords) { %>
+        <table width="100%" style="padding: 10px; border: 1px solid black">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Website</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody class="list_of_passwords">
 
-  <!-- PASSWORDS CONTAINER BEGIN -->
-  <div id="passwords_container" style="width: 100%; height: 100%; display: none"
-  >
-    <h2>Your personal passwords</h2>
-    <div class="personal_passwords_container">
-      <table width="100%" style="padding: 10px; border: 1px solid black">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody class="list_of_passwords">
-          <tr>
-            <td id="password_name">netflix.com</td>
-            <td id="password_category">Film & Entertainment</td>
-            <td id="password_edit_btn">
-              <form action="POST" action="/passwords/:id/edit">
-                <button type="submit">Edit</button>
-              </form>
-            </td>
-            <td id="password_delete_btn">
-              <form action="POST" action="/passwords/:id">
-                <button type="submit">Delete</button>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <% passwords.forEach((password) => { %>
+                <% if (password.organization === null) { %>
+                <tr>
+                  <td id="password_name"><%=password.password_name%></td>
+                  <td id="password_category"><%=password.category%></td>
+                  <td id="visit-website">
+                      <a target="_blank" style="color: white; text-decoration: none;" href="<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+                  </td>
+                  <td id="password_edit_btn">
+                    <form action="POST" action="/passwords/:id/edit">
+                      <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                  </td>
+                  <td id="password_delete_btn">
+                    <form action="POST" action="/passwords/:id">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+                <% } %>
+              <% }) %>
+          </tbody>
+
+        </table>
+        <% } %>
+      </div>
+
+      <!-- PERSONAL PASSWORDS END -->
+
+      <!-- ORGANIZATION PASSWORDS START -->
+
+      <div class="organization_passwords_container">
+        <h2>Your organization's passwords</h2>
+        <% if (passwords) { %>
+        <table width="100%" style="padding: 10px; border: 1px solid black">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Website</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody class="list_of_passwords">
+            <% passwords.forEach((password) => { %>
+              <% if(password.organization !== null) { %>
+            <tr>
+              <td id="password_name"><%=password.organization%></td>
+              <td id="password_category"><%=password.category%></td>
+              <td id="visit-website">
+                  <a target="_blank" style="color: white; text-decoration: none;" href="<%=password.password_url%>">Visit website   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+              </td>
+              <td id="view_btn">
+                <form action="POST" action="/passwords/:id">
+                  <button type="submit" class="btn btn-primary">View</button>
+                </form>
+              </td>
+            </tr>
+            <% } %>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %>
+      </div>
     </div>
 
-    <!-- PERSONAL PASSWORDS END -->
-
-    <!-- ORGANIZATION PASSWORDS START -->
-
-    <h2>Your organization's passwords</h2>
-    <div class="organization_passwords_container">
-      <table width="100%" style="padding: 10px; border: 1px solid black">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody class="list_of_passwords">
-          <tr>
-            <td id="password_name">netflix.com</td>
-            <td id="password_category">Film & Entertainment</td>
-            <td id="view_btn">
-              <form action="POST" action="/passwords/:id">
-                <button type="submit">Delete</button>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- PASSWORDS CONTAINER END -->
-
-  <style>
-    nav {
-      position: fixed;
-      display: flex;
-      justify-content: space-between;
-      top: 0;
-      left: 0;
-      background-color: white;
-      width: 100%;
-      padding: 10px;
-    }
-
-    .passwords_container {
-      display: none;
-    }
-
-    .personal_passwords_container {
-      width: 100%;
-      text-align: left;
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
-
-</body>
-
+    <!-- PASSWORDS CONTAINER END -->
+  </body>
 </html>
