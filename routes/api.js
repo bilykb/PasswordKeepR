@@ -9,15 +9,24 @@ module.exports = (db) => {
 
     db.query(
       `
-    SELECT *
-    FROM passwords
-    WHERE user_id = $1`,
-      [userCookieId]
+      SELECT accounts.email AS email,
+             passwords.name as password_name,
+             passwords.username AS password_username,
+             passwords.url AS password_url,
+             passwords.password as password,
+             categories.name AS category,
+             organizations.name AS organization
+      FROM accounts
+      JOIN passwords ON accounts.id = passwords.user_id
+      FULL JOIN organizations ON passwords.org_id= organizations.id
+      JOIN categories ON passwords.category_id = categories.id
+      WHERE accounts.id = $1;
+      `, [userCookieId]
     )
       .then((data) => {
-        const userPasswords = data.rows;
-        console.log(userPasswords);
-        res.render("index", userPasswords);
+        console.log('data.rows....', data.rows)
+        const userPasswordsTemplateVars = { passwords: data.rows };
+        res.render("index", userPasswordsTemplateVars);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
