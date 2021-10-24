@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
     <!-- Bootstrap -->
     <link
@@ -24,7 +25,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
 
 
   </head>
@@ -32,42 +33,55 @@
   <body>
     <%- include('partials/_header') %>
 
-    <!-- PASSWORDS CONTAINER BEGIN -->
+    <!-- CONTENT WRAPPER BEGIN -->
     <div class="content-wrapper">
 
+      <!-- SORT BY DROPDOWN -->
+      <div class="dropdown" style="align-self: flex-end">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sort by
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <form method="POST" action="/api/passwords" id="sort_by_form">
+            <button type="submit" class="dropdown-item" value="category" name="sort_by">Category</button>
+            <button type="submit" class="dropdown-item" value="name" name="sort_by">Name</button>
+          </form>
+        </div>
+      </div>
 
-      <div class="create_new_password_container" style="display: none;">
-        <h2>Create a new password</h2>
-        <form method="POST" action="/">
+      <!-- EDIT EXISTING PASSWORD FORM -->
+      <div class="edit_password_container">
+        <h2>Edit your password</h2>
+        <form method="POST" action="/api/passwords">
           <label for="website">Website</label>
           <input type="text" name="website" class="form-control">
           <label for="name">Name</label>
           <input type="text" name="name" class="form-control">
           <label for="category">Category</label>
-          <select name="categories" id="categories" class="form-control">
-            <option value="blah"></option>
-            <option value="test"></option>
-            <option value="label"></option>
-            <option value="yes"></option>
+          <select name="categories" id="categories" class="form-select">
+            <option value="" selected="selected" disabled hidden>Pick your category</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="social">Social</option>
+            <option value="news">News</option>
           </select>
           <label for="login">Log in</label>
           <input type="text" name="login" class="form-control">
           <label for="password">Password</label>
-          <input type="text" name="password" class="form-control">
+          <input type="password" name="password" class="form-control">
           <div class="form_btns">
-            <button type="submit" class="btn btn-primary">Create</button>
-            <button type="button" class="btn btn-danger">Cancel</button>
+            <button type="submit" class="btn btn-primary save_btn">Save</button>
+            <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
           </div>
         </form>
       </div>
 
 
-
-      <button class="create_new_password btn btn-dark" style="align-self: flex-end">Add new + </button>
+      <button class="create_new_password" style="align-self: flex-end"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="15.1191" y1="0.90625" x2="15.1191" y2="29.0937" stroke="white" stroke-width="2"/><line x1="29.0937" y1="16" x2="0.90624" y2="16" stroke="white" stroke-width="2"/></svg></button>
       <div class="personal_passwords_container">
         <h2>Your personal passwords</h2>
         <% if (passwords) { %>
-        <table width="100%" style="padding: 10px; border: 1px solid black">
+        <table width="100%">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -84,8 +98,8 @@
                 <tr>
                   <td id="password_name"><%=password.password_name%></td>
                   <td id="password_category"><%=password.category%></td>
-                  <td id="visit-website">
-                      <a target="_blank" style="color: white; text-decoration: none;" href="<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+                  <td id="visit_website">
+                      <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
                   </td>
                   <td id="password_edit_btn">
                       <button type="submit" class="btn btn-primary edit_btn">Edit</button>
@@ -111,7 +125,7 @@
       <div class="organization_passwords_container">
         <h2>Your organization's passwords</h2>
         <% if (passwords) { %>
-        <table width="100%" style="padding: 10px; border: 1px solid black">
+        <table width="100%">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -126,8 +140,8 @@
             <tr>
               <td id="password_name"><%=password.organization%></td>
               <td id="password_category"><%=password.category%></td>
-              <td id="visit-website">
-                  <a target="_blank" style="color: white; text-decoration: none;" href="<%=password.password_url%>">Visit website   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+              <td id="visit_website">
+                  <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
               </td>
               <td id="view_btn">
                 <form action="POST" action="/passwords/:id">
@@ -145,5 +159,9 @@
 
     <!-- PASSWORDS CONTAINER END -->
   </body>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <script type="module" src="/scripts/app.js"></script>
 </html>

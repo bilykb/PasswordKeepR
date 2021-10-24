@@ -1,8 +1,12 @@
+// Sass variables
+
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+
 
   background: rgb(163, 208, 219);
   background: linear-gradient(
@@ -26,6 +30,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.3);
+
+
 }
 
 .content-wrapper {
@@ -36,9 +43,36 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   padding: 2em;
+
+  tbody tr {
+    border-top: 1px solid rgb(99, 99, 99);
+    border-bottom: 1px solid rgb(99, 99, 99);
+    td {
+      padding: 1em 0
+    }
+  }
+
+  .create_new_password  {
+    border: 0px;
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 2em;
+    background: linear-gradient(#7C99FF, #41CB99);
+    box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.3);
+    transition: 500ms ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 }
 
-#visit-website a {
+#visit_website a {
   text-decoration: none;
   color: white;
   background-color: #6c757d;
@@ -50,4 +84,51 @@ nav {
     opacity: 0.7;
   }
 
+}
+
+.create_new_password_container, .edit_password_container {
+  transition: 500ms ease;
+  opacity: 0;
+  transform: translateX(100%);
+  background-color: white;
+  height: 100vh;
+  width: 30rem;
+  padding: 4em;
+  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  form {
+    height: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+      margin-bottom: 0.4em;
+    }
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form_btns {
+      align-self: flex-end;
+    }
+  }
+}
+
+.in_view {
+  transition: 500ms ease;
+  opacity: 1;
+  transform: translateX(0%);
 }
