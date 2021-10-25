@@ -72,11 +72,7 @@ module.exports = (db) => {
   });
 
   //Update a password
-<<<<<<< HEAD
-  router.post("/passwords/:id", (req, res) => {
-=======
   router.post("/:id", (req, res) => {
->>>>>>> e4add3b6d312aa767fb0a1509e27982d10867529
 
     const queryText = `
       UPDATE passwords
@@ -102,7 +98,7 @@ module.exports = (db) => {
     ];
 
     return db.query(queryText, queryValues)
-    .then (updatedInfo => updatedInfo)
+    .then (updatedInfo => updatedInfo.rows[0])
     .catch(err => {
       res.status(500).json({ error: err.message });
     })
