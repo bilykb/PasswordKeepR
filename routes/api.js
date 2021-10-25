@@ -80,12 +80,12 @@ module.exports = (db) => {
       url = $2,
       username = $3,
       password = $4,
-      category_id = $5
+      category_id = $5,
+      modified = NOW()
       WHERE id = $6
       AND user_id = $7
       RETURNING *
     `
-
 
     const queryValues = [
       req.body.name,
@@ -94,7 +94,8 @@ module.exports = (db) => {
       req.body.password,
       req.body.category,
       1,
-      req.session.user_id];
+      req.session.user_id
+    ];
 
     return db.query(queryText, queryValues)
     .then (res => console.log(res.rows))
