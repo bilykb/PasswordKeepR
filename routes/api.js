@@ -73,6 +73,20 @@ module.exports = (db) => {
   //Create a new password
   router.post("/passwords", (req, res) => {
     const userCookieId = req.session.user_id;
+
+    const queryText = `
+      UPDATE passwords
+      SET name = $1,
+      url = $2,
+      username = $3,
+      password = $4,
+      category_id = $5
+      WHERE id = $6
+      AND user_id = $7
+    `
+
+    const queryValues = [req.body.name, req.body.website, req.body.login, req.body.password, req.body.category]
+
     db.query(`
 
 
