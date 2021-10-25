@@ -74,21 +74,40 @@ module.exports = (db) => {
 
   //Create a new password
   router.post("/passwords", (req, res) => {
-    const userCookieId = req.session.user_id;
-    db.query(`
-
-
-    `, [])
-    .then ()
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-    })
 
   });
 
   //Update a password
   router.post("passwords/:id", (req, res) => {
 
+    const queryText = `
+      UPDATE passwords
+      SET name = $1,
+      url = $2,
+      username = $3,
+      password = $4,
+      category_id = $5,
+      modified = NOW()
+      WHERE id = $6
+      AND user_id = $7
+      RETURNING *
+    `
+
+    const queryValues = [
+      req.body.name,
+      req.body.website,
+      req.body.login,
+      req.body.password,
+      req.body.category,
+      1,
+      req.session.user_id
+    ];
+
+    return db.query(queryText, queryValues)
+    .then (res => console.log(res.rows))
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    })
   });
 
   //Delete a password

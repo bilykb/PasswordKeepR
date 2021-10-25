@@ -50,33 +50,6 @@
       </div>
 
       <!-- EDIT EXISTING PASSWORD FORM -->
-      <div class="edit_password_container">
-        <h2>Edit your password</h2>
-        <form method="POST" action="/api/passwords">
-          <label for="website">Website</label>
-          <input type="text" name="website" class="form-control">
-          <label for="name">Name</label>
-          <input type="text" name="name" class="form-control">
-          <label for="category">Category</label>
-          <select name="categories" id="categories" class="form-select">
-            <option value="" selected="selected" disabled hidden>Pick your category</option>
-            <option value="business">Business</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="social">Social</option>
-            <option value="news">News</option>
-          </select>
-          <label for="login">Log in</label>
-          <input type="text" name="login" class="form-control">
-          <label for="password">Password</label>
-          <input type="password" name="password" class="form-control">
-          <div class="form_btns">
-            <button type="submit" class="btn btn-primary save_btn">Save</button>
-            <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
-          </div>
-        </form>
-      </div>
-
-
       <button class="create_new_password" style="align-self: flex-end"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="15.1191" y1="0.90625" x2="15.1191" y2="29.0937" stroke="white" stroke-width="2"/><line x1="29.0937" y1="16" x2="0.90624" y2="16" stroke="white" stroke-width="2"/></svg></button>
 
       <!-- ADD NEW PASSWORD FORM -->
@@ -123,7 +96,7 @@
 
               <% private.forEach((password) => { %>
 
-                <tr>
+                <tr value="1">
                   <td id="password_name"><%=password.password_name%></td>
                   <td id="password_category"><%=password.password_category%></td>
                   <td id="visit_website">
@@ -131,6 +104,32 @@
                   </td>
                   <td id="password_edit_btn">
                       <button type="submit" class="btn btn-primary edit_btn">Edit</button>
+                      <div class="edit_password_container">
+                        <h2>Edit your password</h2>
+                        <form method="POST" action="/api/passwords" class="form-control">
+                          <label for="website">Website</label>
+                          <input type="text" name="website" class="form-control" value="<%=password.password_url%>">
+                          <label for="name">Name</label>
+                          <input type="text" name="name" class="form-control">
+                          <label for="category">Category</label>
+                          <select name="categories" id="categories" class="form-select">
+                            <option value="" selected="selected" disabled hidden>Pick your category</option>
+                            <option value="" hidden id="password_id"></option>
+                            <option value="1">Business</option>
+                            <option value="2">Entertainment</option>
+                            <option value="3">Social</option>
+                            <option value="4">News</option>
+                          </select>
+                          <label for="login">Log in</label>
+                          <input type="text" name="login" class="form-control">
+                          <label for="password">Password</label>
+                          <input type="password" name="password" class="form-control">
+                          <div class="form_btns">
+                            <button type="submit" class="btn btn-primary save_btn">Save</button>
+                            <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
+                          </div>
+                        </form>
+                      </div>
                   </td>
                   <td id="password_delete_btn">
                     <form method="POST" action="/passwords/:id">
