@@ -59,19 +59,11 @@ module.exports = (db) => {
           const passwordOrg = { organization: orgData.rows };
           userPasswordsTemplateVars = {
             ...passwordData,
-<<<<<<< HEAD
-            ...passwordOrg
-          }
-
-        res.render("index", userPasswordsTemplateVars);
-        })
-=======
             ...passwordOrg,
           };
           console.log(userPasswordsTemplateVars);
           res.render("index", userPasswordsTemplateVars);
         });
->>>>>>> 76bbea0df76b24d3f463c990f2748502428ff8be
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
