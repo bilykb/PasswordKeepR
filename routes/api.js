@@ -92,16 +92,17 @@ module.exports = (db) => {
       req.body.website,
       req.body.login,
       req.body.password,
-      req.body.category,
-      1,
+      req.body.categories,
+      req.params.id,
       req.session.user_id
     ];
 
     return db.query(queryText, queryValues)
-    .then (res => console.log(res.rows))
+    .then (updatedInfo => updatedInfo.rows[0])
     .catch(err => {
       res.status(500).json({ error: err.message });
     })
+    .then(res.redirect('/api/passwords'))
   });
 
   //Delete a password
