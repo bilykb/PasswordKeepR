@@ -6,15 +6,7 @@ $(() => {
     const $container =  $(".edit_password_container");
     $container.addClass("in_view");
     const $formFields = $container.find("input, select");
-
-    //This request will be modularized later on
-    $.post('/api/passwords', (data) => {
-      console.log('data.....', data)
-    })
-
-    $formFields.each((i, field) => {
-      $(field).val('this will be the current value');
-    })
+    console.log($(this).parents()[1].attr());
   })
 
   //Close edit form when cancel button is clicked
@@ -22,6 +14,11 @@ $(() => {
     //Reset to hidden state
     $($(this).parents()[2]).removeClass("in_view");
   })
+
+  $(".edit_password_container form").on("submit", function() {
+    const $editedValues = $(this).serialize();
+  })
+
 
   //Shows the add passord form when the + button is pressed
   $(".create_new_password").on("click", function() {
