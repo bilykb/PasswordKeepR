@@ -3,10 +3,8 @@ $(() => {
   // EDIT PASSWORDS CLICK HANDLERS
 
   $(".edit_btn").on("click", function(e) {
-    const $container =  $(".edit_password_container");
+    const $container =  $(this).next();
     $container.addClass("in_view");
-    const $formFields = $container.find("input, select");
-    console.log($(this).parents()[1].attr());
   })
 
   //Close edit form when cancel button is clicked
