@@ -98,10 +98,11 @@ module.exports = (db) => {
     ];
 
     return db.query(queryText, queryValues)
-    .then (result => console.log(result.rows))
+    .then (updatedInfo => updatedInfo)
     .catch(err => {
       res.status(500).json({ error: err.message });
     })
+    .then(res.redirect('/api/passwords'))
   });
 
   //Delete a password
