@@ -16,10 +16,10 @@ module.exports = (db) => {
 
     db.query(`
     SELECT accounts.email AS email,
-           passwords.name as password_name,
+           passwords.name AS password_name,
            passwords.username AS password_username,
            passwords.url AS password_url,
-           passwords.password as password_password,
+           passwords.password AS password_password,
            categories.name AS password_category,
            accounts.organization_id AS organization_id
     FROM passwords
@@ -31,29 +31,31 @@ module.exports = (db) => {
     `, [userCookieId, orderByOption])
 
       .then(privateData => {
-        const passwordData = { passwords: privateData.rows };
+        const passwordData = { private: privateData.rows };
+        const orgId = privateData.rows[0].organization_id
 
         db.query(`
         SELECT organizations.name,
-                passwords.name as password_name,
+                passwords.name AS password_name,
                 passwords.username AS password_username,
                 passwords.url AS password_url,
-                passwords.password as password_password,
+                passwords.password AS password_password,
                 categories.name AS password_category
         FROM passwords
         JOIN categories ON passwords.category_id = categories.id
         JOIN organizations ON passwords.org_id = organizations.id
         JOIN accounts ON passwords.user_id = accounts.id
         WHERE organizations.id = $1
-        ORDER BY categories.name;
-        `, [passwordData.organization_id])
+        ORDER BY $2;
+        `, [orgId, orderByOption])
 
         .then(orgData => {
-          const passwordOrg = orgData.rows
+          const passwordOrg = { organization: orgData.rows }
           userPasswordsTemplateVars = {
             ...passwordData,
             ...passwordOrg
           }
+          console.log(userPasswordsTemplateVars)
         res.render("index", userPasswordsTemplateVars);
         })
       })
