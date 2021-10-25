@@ -22,5 +22,20 @@ $(() => {
     //Reset to hidden state
     $($(this).parents()[2]).removeClass("in_view");
   })
+
+  //Shows the add passord form when the + button is pressed
+  $(".create_new_password").on("click", function() {
+    //Un hiddens form
+    const $container =  $(".create_new_password_container");
+    $container.addClass("in_view");
+    const $formFields = $container.find("input, select");
+
+    //This request will be modularized later on
+    $.post('/api/passwords', (data) => {
+      console.log('data.....', data)
+    })
+
+  })
+
 })
 
