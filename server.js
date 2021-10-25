@@ -47,7 +47,7 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const accountRoutes = require("./routes/user");
-const passwordRoutes = require("./routes/api");
+const passwordRoutes = require("./routes/passwords");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
