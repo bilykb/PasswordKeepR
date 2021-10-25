@@ -72,7 +72,11 @@ module.exports = (db) => {
 
   //Create a new password
   router.post("/passwords", (req, res) => {
-    const userCookieId = req.session.user_id;
+
+  });
+
+  //Update a password
+  router.post("passwords/:id", (req, res) => {
 
     const queryText = `
       UPDATE passwords
@@ -102,12 +106,6 @@ module.exports = (db) => {
     .catch(err => {
       res.status(500).json({ error: err.message });
     })
-
-  });
-
-  //Update a password
-  router.post("passwords/:id", (req, res) => {
-
   });
 
   //Delete a password
