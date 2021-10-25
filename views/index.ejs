@@ -106,7 +106,10 @@
                       <button type="submit" class="btn btn-primary edit_btn">Edit</button>
                       <div class="edit_password_container">
                         <h2>Edit your password</h2>
-                        <form method="POST" action="/api/passwords" class="form-control">
+                        <form method="POST" action="/api/passwords/<%=password.password_id%>" class="form-control">
+                          <!-- Hidden input field to send password ID from form -->
+                          <input type="hidden">
+                          <!-- Hidden input field to send password ID from form -->
                           <label for="website">Website</label>
                           <input type="text" name="website" class="form-control" value="<%=password.password_url%>">
                           <label for="name">Name</label>
@@ -114,7 +117,6 @@
                           <label for="category">Category</label>
                           <select name="categories" id="categories" class="form-select">
                             <option value="" selected="selected" disabled hidden>Pick your category</option>
-                            <option value="" hidden id="password_id"></option>
                             <option value="1">Business</option>
                             <option value="2">Entertainment</option>
                             <option value="3">Social</option>
