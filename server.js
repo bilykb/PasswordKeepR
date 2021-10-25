@@ -52,7 +52,7 @@ const passwordRoutes = require("./routes/api");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/user", accountRoutes(db));
-app.use("/api", passwordRoutes(db));
+app.use("/api/passwords", passwordRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
