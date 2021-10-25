@@ -83,15 +83,21 @@ module.exports = (db) => {
       category_id = $5
       WHERE id = $6
       AND user_id = $7
+      RETURNING *
     `
 
-    const queryValues = [req.body.name, req.body.website, req.body.login, req.body.password, req.body.category]
 
-    db.query(`
+    const queryValues = [
+      req.body.name,
+      req.body.website,
+      req.body.login,
+      req.body.password,
+      req.body.category,
+      1,
+      req.session.user_id];
 
-
-    `, [])
-    .then ()
+    return db.query(queryText, queryValues)
+    .then (res => console.log(res.rows))
     .catch(err => {
       res.status(500).json({ error: err.message });
     })
