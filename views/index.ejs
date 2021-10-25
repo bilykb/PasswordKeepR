@@ -61,7 +61,7 @@
           <label for="name">Name</label>
           <input type="text" name="name" class="form-control">
           <label for="category">Category</label>
-          <select name="categories" id="categories" class="form-select">
+          <select name="categories" class="form-select">
             <option value="" selected="selected" disabled hidden>Pick your category</option>
             <option value="business">Business</option>
             <option value="entertainment">Entertainment</option>
@@ -71,7 +71,7 @@
           <label for="login">Log in</label>
           <input type="text" name="login" class="form-control">
           <label for="password">Password</label>
-          <input type="password" name="password" class="form-control">
+          <input type="password" name="password" class="form-control" autocomplete="off">
           <div class="form_btns">
             <button type="submit" class="btn btn-primary save_new_btn">Save</button>
             <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
@@ -120,7 +120,7 @@
                           <label for="name">Name</label>
                           <input type="text" name="name" class="form-control" value="<%=password.password_name%>" required="true">
                           <label for="category">Category</label>
-                          <select name="categories" id="categories" class="form-select">
+                          <select name="categories" class="form-select">
                             <option value="" selected="selected" disabled hidden>Pick your category</option>
                             <option value="1">Business</option>
                             <option value="2">Entertainment</option>
@@ -130,7 +130,7 @@
                           <label for="login">Log in</label>
                           <input type="text" name="login" class="form-control" value="<%=password.password_username%>" required="true">
                           <label for="password">Password</label>
-                          <input type="password" name="password" class="form-control" value="<%=password.password_password%>" required="true">
+                          <input type="password" name="password" class="form-control" value="<%=password.password_password%>" required="true" autocomplete="off">
                           <div class="form_btns">
                             <button type="submit" class="btn btn-primary save_btn">Save</button>
                             <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
