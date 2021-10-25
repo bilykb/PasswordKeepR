@@ -13,11 +13,6 @@ $(() => {
     $($(this).parents()[2]).removeClass("in_view");
   })
 
-  $(".edit_password_container form").on("submit", function() {
-    const $editedValues = $(this).serialize();
-  })
-
-
   //Shows the add passord form when the + button is pressed
   $(".create_new_password").on("click", function() {
     //Un hiddens form
@@ -31,6 +26,5 @@ $(() => {
     })
 
   })
-
 })
 
