@@ -46,8 +46,8 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const accountRoutes = require("./routes/user");
-const passwordRoutes = require("./routes/api");
+const accountRoutes = require("./api/user");
+const passwordRoutes = require("./api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -61,7 +61,7 @@ app.use("/api", passwordRoutes(db));
 
 app.get("/", (req, res) => {
   if (!req.session.user_id) {
-    res.redirect("/user/login");
+    res.redirect("/api/user/login");
     return;
   }
   res.redirect("/api/passwords");
