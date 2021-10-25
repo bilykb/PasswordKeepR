@@ -57,7 +57,7 @@ module.exports = (db) => {
             ...passwordData,
             ...passwordOrg
           }
-          console.log(userPasswordsTemplateVars)
+
         res.render("index", userPasswordsTemplateVars);
         })
       })
@@ -84,7 +84,6 @@ module.exports = (db) => {
       modified = NOW()
       WHERE id = $6
       AND user_id = $7
-      RETURNING *
     `
 
     const queryValues = [
