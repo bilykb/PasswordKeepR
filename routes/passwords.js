@@ -73,7 +73,7 @@ module.exports = (db) => {
 
   //Update a password
   router.post("/:id", (req, res) => {
-
+    console.log('req.body......', req.body)
     const queryText = `
       UPDATE passwords
       SET name = $1,
@@ -106,7 +106,7 @@ module.exports = (db) => {
   });
 
   //Delete a password
-  router.delete("/:id", (req, res) => {
+  router.post("/:id/delete", (req, res) => {
 
   });
 
