@@ -66,12 +66,6 @@ module.exports = (db) => {
       })
   });
 
-
-  //Get create a new password form
-  router.get("/passwords/new", (req, res) => {
-
-  });
-
   //Create a new password
   router.post("/passwords", (req, res) => {
 
