@@ -9,7 +9,7 @@ $(() => {
 
     //This request will be modularized later on
     $.post('/api/passwords', (data) => {
-      console.log(data)
+      console.log('data.....', data)
     })
 
     $formFields.each((i, field) => {
