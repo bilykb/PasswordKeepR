@@ -72,6 +72,15 @@ module.exports = (db) => {
 
   //Create a new password
   router.post("/passwords", (req, res) => {
+    const userCookieId = req.session.user_id;
+    db.query(`
+
+
+    `, [])
+    .then ()
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    })
 
   });
 
