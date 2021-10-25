@@ -104,6 +104,9 @@
                   </td>
                   <td id="password_edit_btn">
                       <button type="submit" class="btn btn-primary edit_btn">Edit</button>
+
+                      <!-- EDIT PASSWORD FORM BEGIN -->
+
                       <div class="edit_password_container">
                         <h2>Edit your password</h2>
                         <form method="POST" action="/api/passwords/<%=password.password_id%>" class="form-control">
@@ -111,9 +114,9 @@
                           <input type="hidden">
                           <!-- Hidden input field to send password ID from form -->
                           <label for="website">Website</label>
-                          <input type="text" name="website" class="form-control" value="<%=password.password_url%>">
+                          <input type="text" name="website" class="form-control" value="<%=password.password_url%>" required="true">
                           <label for="name">Name</label>
-                          <input type="text" name="name" class="form-control">
+                          <input type="text" name="name" class="form-control" required="true">
                           <label for="category">Category</label>
                           <select name="categories" id="categories" class="form-select">
                             <option value="" selected="selected" disabled hidden>Pick your category</option>
@@ -123,15 +126,17 @@
                             <option value="4">News</option>
                           </select>
                           <label for="login">Log in</label>
-                          <input type="text" name="login" class="form-control">
+                          <input type="text" name="login" class="form-control" required="true">
                           <label for="password">Password</label>
-                          <input type="password" name="password" class="form-control">
+                          <input type="password" name="password" class="form-control" required="true">
                           <div class="form_btns">
                             <button type="submit" class="btn btn-primary save_btn">Save</button>
                             <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
                           </div>
                         </form>
                       </div>
+
+                      <!-- EDIT PASSWORD FORM END -->
                   </td>
                   <td id="password_delete_btn">
                     <form method="POST" action="/passwords/:id">
