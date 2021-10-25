@@ -42,7 +42,7 @@
           Sort by
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <form method="POST" action="/api/passwords" id="sort_by_form">
+          <form method="GET" action="/api/passwords" id="sort_by_form">
             <button type="submit" class="dropdown-item" value="category" name="sort_by">Category</button>
             <button type="submit" class="dropdown-item" value="name" name="sort_by">Name</button>
           </form>
@@ -80,7 +80,7 @@
       <button class="create_new_password" style="align-self: flex-end"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="15.1191" y1="0.90625" x2="15.1191" y2="29.0937" stroke="white" stroke-width="2"/><line x1="29.0937" y1="16" x2="0.90624" y2="16" stroke="white" stroke-width="2"/></svg></button>
       <div class="personal_passwords_container">
         <h2>Your personal passwords</h2>
-        <% if (passwords) { %>
+        <% if (private) { %>
         <table width="100%">
           <thead>
             <tr>
@@ -93,11 +93,11 @@
           </thead>
           <tbody class="list_of_passwords">
 
-              <% passwords.forEach((password) => { %>
-                <% if (password.organization === null) { %>
+              <% private.forEach((password) => { %>
+
                 <tr>
                   <td id="password_name"><%=password.password_name%></td>
-                  <td id="password_category"><%=password.category%></td>
+                  <td id="password_category"><%=password.password_category%></td>
                   <td id="visit_website">
                       <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
                   </td>
@@ -110,7 +110,7 @@
                     </form>
                   </td>
                 </tr>
-                <% } %>
+
               <% }) %>
           </tbody>
 
@@ -124,7 +124,7 @@
 
       <div class="organization_passwords_container">
         <h2>Your organization's passwords</h2>
-        <% if (passwords) { %>
+        <% if (organization) { %>
         <table width="100%">
           <thead>
             <tr>
@@ -135,11 +135,11 @@
             </tr>
           </thead>
           <tbody class="list_of_passwords">
-            <% passwords.forEach((password) => { %>
-              <% if(password.organization !== null) { %>
+            <% organization.forEach((password) => { %>
+
             <tr>
-              <td id="password_name"><%=password.organization%></td>
-              <td id="password_category"><%=password.category%></td>
+              <td id="password_name"><%=password.name%></td>
+              <td id="password_category"><%=password.password_category%></td>
               <td id="visit_website">
                   <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
               </td>
@@ -149,7 +149,7 @@
                 </form>
               </td>
             </tr>
-            <% } %>
+
             <% }) %>
           </tbody>
         </table>
