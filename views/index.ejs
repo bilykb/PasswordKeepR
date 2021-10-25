@@ -42,7 +42,7 @@
           Sort by
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <form method="POST" action="/api/passwords" id="sort_by_form">
+          <form method="GET" action="/api/passwords" id="sort_by_form">
             <button type="submit" class="dropdown-item" value="category" name="sort_by">Category</button>
             <button type="submit" class="dropdown-item" value="name" name="sort_by">Name</button>
           </form>
@@ -80,7 +80,7 @@
       <button class="create_new_password" style="align-self: flex-end"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="15.1191" y1="0.90625" x2="15.1191" y2="29.0937" stroke="white" stroke-width="2"/><line x1="29.0937" y1="16" x2="0.90624" y2="16" stroke="white" stroke-width="2"/></svg></button>
       <div class="personal_passwords_container">
         <h2>Your personal passwords</h2>
-        <% if (passwords) { %>
+        <% if (private) { %>
         <table width="100%">
           <thead>
             <tr>
@@ -93,7 +93,7 @@
           </thead>
           <tbody class="list_of_passwords">
 
-              <% passwords.forEach((password) => { %>
+              <% private.forEach((password) => { %>
                 <% if (password.organization === null) { %>
                 <tr>
                   <td id="password_name"><%=password.password_name%></td>
@@ -124,7 +124,7 @@
 
       <div class="organization_passwords_container">
         <h2>Your organization's passwords</h2>
-        <% if (passwords) { %>
+        <% if (organization) { %>
         <table width="100%">
           <thead>
             <tr>
@@ -135,7 +135,7 @@
             </tr>
           </thead>
           <tbody class="list_of_passwords">
-            <% passwords.forEach((password) => { %>
+            <% organization.forEach((password) => { %>
               <% if(password.organization !== null) { %>
             <tr>
               <td id="password_name"><%=password.organization%></td>
