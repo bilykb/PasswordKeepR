@@ -5,7 +5,7 @@ const router = express.Router();
 module.exports = (db) => {
 
   //Get list of passwords dashboard
-  router.get("/passwords", (req, res) => {
+  router.get("/", (req, res) => {
     const userCookieId = req.session.user_id;
     const orderByOption = req.body.sort_by ? req.body.sort_by : `password_name`
 
@@ -67,12 +67,12 @@ module.exports = (db) => {
   });
 
   //Create a new password
-  router.post("/passwords", (req, res) => {
+  router.post("/", (req, res) => {
 
   });
 
   //Update a password
-  router.post("passwords/:id", (req, res) => {
+  router.post("/:id", (req, res) => {
 
     const queryText = `
       UPDATE passwords
@@ -105,7 +105,7 @@ module.exports = (db) => {
   });
 
   //Delete a password
-  router.post("passwords/:id", (req, res) => {
+  router.delete("/:id", (req, res) => {
 
   });
 
