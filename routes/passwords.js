@@ -3,18 +3,18 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-
   //Get list of passwords dashboard
   router.get("/", (req, res) => {
     const userCookieId = req.session.user_id;
-    const orderByOption = req.body.sort_by ? req.body.sort_by : `password_name`
+    const orderByOption = req.body.sort_by ? req.body.sort_by : `password_name`;
 
     if (!userCookieId) {
-      res.redirect('/user/login');
+      res.redirect("/user/login");
       return;
     }
 
-    db.query(`
+    db.query(
+      `
     SELECT accounts.email AS email,
            passwords.id AS password_id,
            passwords.name AS password_name,
@@ -29,13 +29,16 @@ module.exports = (db) => {
     WHERE passwords.user_id = $1
     AND passwords.org_id IS NULL
     ORDER BY $2;
-    `, [userCookieId, orderByOption])
+    `,
+      [userCookieId, orderByOption]
+    )
 
-      .then(privateData => {
+      .then((privateData) => {
         const passwordData = { private: privateData.rows };
-        const orgId = privateData.rows[0].organization_id
+        const orgId = privateData.rows[0].organization_id;
 
-        db.query(`
+        db.query(
+          `
         SELECT organizations.name,
                 passwords.id AS password_id,
                 passwords.name AS password_name,
@@ -49,31 +52,38 @@ module.exports = (db) => {
         JOIN accounts ON passwords.user_id = accounts.id
         WHERE organizations.id = $1
         ORDER BY $2;
-        `, [orgId, orderByOption])
-
-        .then(orgData => {
-          const passwordOrg = { organization: orgData.rows }
+        `,
+          [orgId, orderByOption]
+        )
+        .then((orgData) => {
+          const passwordOrg = { organization: orgData.rows };
           userPasswordsTemplateVars = {
             ...passwordData,
+<<<<<<< HEAD
             ...passwordOrg
           }
 
         res.render("index", userPasswordsTemplateVars);
         })
+=======
+            ...passwordOrg,
+          };
+          console.log(userPasswordsTemplateVars);
+          res.render("index", userPasswordsTemplateVars);
+        });
+>>>>>>> 76bbea0df76b24d3f463c990f2748502428ff8be
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).json({ error: err.message });
-      })
+      });
   });
 
   //Create a new password
-  router.post("/", (req, res) => {
-
-  });
+  router.post("/", (req, res) => {});
 
   //Update a password
   router.post("/:id", (req, res) => {
-    console.log('req.body......', req.body)
+
     const queryText = `
       UPDATE passwords
       SET name = $1,
@@ -84,7 +94,8 @@ module.exports = (db) => {
       modified = NOW()
       WHERE id = $6
       AND user_id = $7
-    `
+      RETURNING *
+    `;
 
     const queryValues = [
       req.body.name,
@@ -93,20 +104,39 @@ module.exports = (db) => {
       req.body.password,
       req.body.categories,
       req.params.id,
-      req.session.user_id
+      req.session.user_id,
     ];
 
-    return db.query(queryText, queryValues)
-    .then (updatedInfo => updatedInfo.rows[0])
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-    })
-    .then(res.redirect('/api/passwords'))
+    return db
+      .query(queryText, queryValues)
+      .then((updatedInfo) => updatedInfo.rows[0])
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      })
+      .then(res.redirect("/api/passwords"));
   });
 
   //Delete a password
   router.post("/:id/delete", (req, res) => {
+    const user_id = req.session.user_id;
+    const passwordId = req.params.id;
 
+    db.query(`SELECT * FROM passwords WHERE id = $1`, [passwordId])
+      .then((data) => {
+        return data.rows[0];
+      })
+      .then((password) => {
+        if (password.user_id !== user_id) {
+          return res.status(403).send("Authentication Failed");
+        }
+        return db.query(`DELETE FROM passwords WHERE id = $1`, [passwordId]);
+      })
+      .then(() => {
+        res.redirect('/');
+      })
+      .catch(err => {
+        console.error(err.message)
+      })
   });
 
   return router;
