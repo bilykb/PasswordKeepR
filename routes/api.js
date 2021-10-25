@@ -16,6 +16,7 @@ module.exports = (db) => {
 
     db.query(`
     SELECT accounts.email AS email,
+           passwords.id AS password_id,
            passwords.name AS password_name,
            passwords.username AS password_username,
            passwords.url AS password_url,
@@ -36,6 +37,7 @@ module.exports = (db) => {
 
         db.query(`
         SELECT organizations.name,
+                passwords.id AS password_id,
                 passwords.name AS password_name,
                 passwords.username AS password_username,
                 passwords.url AS password_url,
