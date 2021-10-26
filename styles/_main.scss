@@ -157,16 +157,21 @@ nav {
 
     .form_btns {
       align-self: flex-end;
+      transform: translateY(2em);
     }
 
     .password-options {
       display: flex;
     }
+
+    .password-toggles {
+      margin-left: 2%;
+    }
+
     .full-width {
       display: block;
       width: 100%;
       margin-top: 5%;
-      margin-bottom:30%;
     }
   }
 }
