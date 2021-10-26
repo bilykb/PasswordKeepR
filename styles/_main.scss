@@ -1,5 +1,6 @@
-//Mixins
-
+.viewport_overlay {
+  background-color: black;
+}
 
 //Custom styles
 body {
@@ -30,6 +31,7 @@ body {
 }
 
 
+
 h1, h2, h3, h4 button {
   font-family: 'Whyte Bold';
 }
@@ -41,10 +43,11 @@ h2, h2, h3, h4, h5, h6, p, span {
 
 
 nav {
-  background-color: rgb(249, 249, 242);
+  background-color: rgb(218, 227, 231);
+  position: fixed;
   top: 0;
   left: 0;
-  width: 30%;
+  width: 350px;
   height: 100vh;
   padding: 2.5em;
   align-items: flex-start;
@@ -52,7 +55,6 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
   z-index: 99;
 
 
@@ -78,10 +80,7 @@ nav {
   flex-direction: column;
   justify-content: space-evenly;
   padding: 5em 4.5em;
-
-  h2 {
-    margin-bottom: 1.5em;
-  }
+  margin-left: 350px;
 
   .personal_passwords_container, .organization_passwords_container {
     display: flex;
@@ -152,7 +151,7 @@ nav {
   padding: 4em;
   box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
-  z-index: 9999;
+  z-index: 99999;
   top: 0;
   right: 0;
   display: flex;
