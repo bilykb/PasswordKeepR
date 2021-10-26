@@ -13,8 +13,6 @@ module.exports = (db) => {
       return;
     }
 
-
-
     db.query(
       `
     SELECT accounts.email AS email,

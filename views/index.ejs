@@ -10,6 +10,9 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
+    <!-- Lottie -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -72,10 +75,11 @@
         </form>
       </div>
 
+      <!-- PERSONAL PASSWORDS BEGIN -->
       <div class="personal_passwords_container">
-
         <% if (!private[0]) { %>
-          <h2>You currently have no passwords.</h2>
+          <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_gcudkx1v.json" background="transparent"  speed="1"  style="width: 300px; height: 300px; align-self: center;"autoplay></lottie-player>
+          <h2 class="is_empty_msg">You currently have no passwords.</h2>
         <% } else { %>
           <h2>Your personal passwords</h2>
         <table width="100%">
@@ -97,36 +101,45 @@
                   <td id="password_name"><%=password.password_name%></td>
                   <td id="password_category"><%=password.password_category%></td>
                   <td id="visit_website">
-                      <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+                      <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px; fill: white;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
                   </td>
                   <td><button class="btn btn-secondary clipboard_btn" data-toggle="tooltip" title="copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>"><svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></td>
                   <td id="password_edit_btn">
                       <button type="submit" class="btn btn-primary edit_btn">Edit</button>
 
                       <!-- EDIT PASSWORD FORM BEGIN -->
-
                       <div class="edit_password_container">
                         <h2>Edit your password</h2>
                         <form method="POST" action="/api/passwords/<%=password.password_id%>">
                           <!-- Hidden input field to send password ID from form -->
                           <input type="hidden">
                           <!-- Hidden input field to send password ID from form -->
-                          <label for="website">Website</label>
-                          <input type="text" name="website" class="form-control" value="<%=password.password_url%>" required="true">
-                          <label for="name">Name</label>
-                          <input type="text" name="name" class="form-control" value="<%=password.password_name%>" required="true">
-                          <label for="category">Category</label>
-                          <select name="categories" class="form-select" required="true">
-                            <option value="" selected="selected" disabled hidden>Pick your category</option>
-                            <option value="1">Business</option>
-                            <option value="2">Entertainment</option>
-                            <option value="3">Social</option>
-                            <option value="4">News</option>
-                          </select>
-                          <label for="login">Log in</label>
-                          <input type="text" name="login" class="form-control" value="<%=password.password_username%>" required="true">
-                          <label for="password">Password</label>
-                          <input type="password" name="password" class="form-control" value="<%=password.password_password%>" required="true" autocomplete="off">
+                          <div class="form_group">
+                            <label for="website">Website</label>
+                            <input type="text" name="website" class="form-control" value="<%=password.password_url%>" required="true">
+                          </div>
+                          <div class="form_group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" value="<%=password.password_name%>" required="true">
+                          </div>
+                          <div class="form_group">
+                            <label for="category">Category</label>
+                            <select name="categories" class="form-select" required="true">
+                              <option value="" selected="selected" disabled hidden>Pick your category</option>
+                              <option value="1">Business</option>
+                              <option value="2">Entertainment</option>
+                              <option value="3">Social</option>
+                              <option value="4">News</option>
+                            </select>
+                          </div>
+                          <div class="form_group">
+                            <label for="login">Log in</label>
+                            <input type="text" name="login" class="form-control" value="<%=password.password_username%>" required="true">
+                          </div>
+                          <div class="form_group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" value="<%=password.password_password%>" required="true" autocomplete="off">
+                          </div>
                           <div class="form_btns">
                             <button type="submit" class="btn btn-primary save_btn">Save</button>
                             <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
@@ -145,19 +158,17 @@
 
               <% }) %>
           </tbody>
-
         </table>
         <% } %>
       </div>
-
       <!-- PERSONAL PASSWORDS END -->
 
       <!-- ORGANIZATION PASSWORDS START -->
       <div class="organization_passwords_container">
-        <h2>Your organization's passwords</h2>
-        <% if (!organization) { %>
-          <h2>You are not part of any organizations</h2>
+        <% if (!organization[0]) { %>
+          <h2 class="is_empty_msg">You are not part of any organizations</h2>
         <% } else { %>
+        <h2>Your organization's passwords</h2>
         <table width="100%">
           <thead>
             <tr>
@@ -175,7 +186,7 @@
               <td id="password_name"><%=password.name%></td>
               <td id="password_category"><%=password.password_category%></td>
               <td id="visit_website">
-                  <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+                  <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px; fill:white"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
               </td>
                 <td><button class="btn btn-secondary clipboard_btn" data-toggle="tooltip" title="Copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>"><svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></td>
               <td id="view_btn">
