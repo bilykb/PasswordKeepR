@@ -4,14 +4,13 @@
 */
 
 //All the elements form the form
-// const newPassword = document.getElementById('result');
-// const passwordLength = document.getElementById('length');
-// const uppercase = document.getElementById('uppercase');
-// const lowercase = document.getElementById('lowercase');
-// const numbers = document.getElementById('numbers');
-// const symbols = document.getElementById('symbols');
-// const generate = document.getElementById('generate');
-//const clipboard = document.getElementById('clipboard');
+const newPassword = document.getElementById('randomPass');
+const passwordLength = document.getElementById('passwordLength');
+const uppercase = document.getElementById('inlineCheckbox2');
+const lowercase = document.getElementById('inlineCheckbox1');
+const numbers = document.getElementById('inlineCheckbox3');
+const symbols = document.getElementById('inlineCheckbox4');
+const generate = document.getElementById('generate');
 
 
 //HELPER FUNCTIONS
@@ -43,20 +42,22 @@ const randomFunc = {
 }
 
 
-// generate.addEventListener('click', () => {
-// 	const length = +lengthEl.value; // converts the length from string to number
-// 	const hasLower = lowercaseEl.checked;
-// 	const hasUpper = uppercaseEl.checked;
-// 	const hasNumber = numbersEl.checked;
-// 	const hasSymbol = symbolsEl.checked;
+generate.addEventListener('click', () => {
 
-//   /*
-//     all of the password generator options are sent to generatePassword function.
-//     The result is inserted to our password textbox.
-//   */
-//   //console.log(generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length));
-// 	newPassword.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
-// });
+  console.log("generate is here......");
+	const length = +passwordLength.value; // converts the length from string to number
+	const hasLower = lowercase.checked;
+	const hasUpper = uppercase.checked;
+	const hasNumber = numbers.checked;
+	const hasSymbol = symbols.checked;
+
+  /*
+    all of the password generator options are sent to generatePassword function.
+    The result is inserted to our password textbox.
+  */
+  //console.log(generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length));
+	newPassword.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
 
 function generatePassword(lower, upper, number, symbol, length) {
 	let generatedPassword = '';
@@ -81,7 +82,7 @@ function generatePassword(lower, upper, number, symbol, length) {
 	return finalPassword;
 }
 
-console.log(generatePassword(true,true,true,true,10));
+//console.log(generatePassword(true,true,true,true,10));
 
 
-console.log(generatePassword(true,false,true,false,12));
+//console.log(generatePassword(true,false,true,false,12));
