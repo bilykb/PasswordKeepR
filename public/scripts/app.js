@@ -3,7 +3,9 @@ $(() => {
   // EDIT PASSWORDS CLICK HANDLERS
 
   $(".edit_btn").on("click", function(e) {
-    const $container =  $(this).next();
+    console.log('is clicked')
+    const $container =  $(this).closest("li").find(".edit_password_container");
+    console.log($container)
     $container.addClass("in_view");
   })
 

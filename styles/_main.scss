@@ -1,5 +1,6 @@
-//Mixins
-
+.viewport_overlay {
+  background-color: black;
+}
 
 //Custom styles
 body {
@@ -23,31 +24,52 @@ body {
 @media screen and (max-width: 1000px) {
   #login {
     flex-direction: column-reverse;
-
-    .login_left, .login_right {
-      width: 100%;
-    }
-
+  }
+  .login_left, .login_right {
+    width: 100% !important;
   }
 }
 
 
-h1, h2, h3, button {
+
+h1, h2, h3, h4 button {
   font-family: 'Whyte Bold';
 }
 
+h2, h2, h3, h4, h5, h6, p, span {
+  color: rgb(55, 55, 55);
+}
+
+
+
 nav {
-  background-color: rgb(250, 250, 248);
+  background-color: rgb(218, 227, 231);
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 1em;
+  width: 350px;
+  height: 100vh;
+  padding: 2.5em;
+  align-items: flex-start;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
   z-index: 99;
+
+
+  .nav_right {
+    border-top: .4px solid rgb(210, 206, 206);
+    padding-top: 10px;
+    width: 100%;
+
+    button {
+      margin-right: auto;
+      display: block;
+    }
+
+  }
+
 }
 
 .content-wrapper {
@@ -57,14 +79,17 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 0 4.5em;
-  margin-top: 10rem;
+  padding: 5em 4.5em;
+  margin-left: 350px;
 
-
-  .personal_passwords_container, .organizations_passwords_container {
+  .personal_passwords_container, .organization_passwords_container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .organization_passwords_container {
+    margin-top: 5rem;
   }
 
   .is_empty_msg {
@@ -73,8 +98,8 @@ nav {
   }
 
   tbody tr {
-    border-top: 1px solid rgb(186, 186, 186);
-    border-bottom: 1px solid rgb(186, 186, 186);
+    border-top: 1px solid rgb(210, 206, 206);
+    border-bottom: 1px solid rgb(210, 206, 206);
 
     td {
       padding: 1em 0;
@@ -106,7 +131,7 @@ nav {
   text-decoration: none;
   color: white;
   background-color: #6c757d;
-  padding: .375rem .75rem;
+  padding: .8rem .9rem;
   border-radius: .25rem;
   transition: 300ms ease;
 
@@ -126,7 +151,7 @@ nav {
   padding: 4em;
   box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
-  z-index: 999;
+  z-index: 99999;
   top: 0;
   right: 0;
   display: flex;
