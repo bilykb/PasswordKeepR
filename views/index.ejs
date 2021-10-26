@@ -58,48 +58,18 @@
           <label for="category">Category</label>
           <select name="categories" class="form-select">
             <option value="" selected="selected" disabled hidden>Pick your category</option>
-            <option value="1">Business</option>
-            <option value="2">Entertainment</option>
-            <option value="3">Social</option>
-            <option value="4">News</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="social">Social</option>
+            <option value="news">News</option>
           </select>
           <label for="login">Log in</label>
           <input type="text" name="login" class="form-control">
           <label for="password">Password</label>
-          <div class='input-group'>
-            <input type="text" name="password" id='randomPass' class="form-control" autocomplete="off">
-            <div class='input-group-append'>
-              <button class='btn btn-outline-secondary' type='button' id ='generate'>Generate!</button>
-            </div>
-          </div>
-          <div class ='form-group mx-sm-3 mb-2'>
-            <label for='passwordLength'>Password length</label>
-            <div>
-              <input type='range' class='form-control' id='passwordLength' name='passwordLength' list='tickmarks' min='8' max='16' step='1' value='8'>
-              <output id='sliderVal'>8</output>
-            </div>
-          </div>
-          <div class='form-inline'>
-            <div class='form-check form-check-inline'>
-              <input class='form-check-input' type='checkbox' id='inlineCheckbox1' name='lowercase'
-              <label class='form-check-label' for='inlineCheckbox1'>lowercase</label>
-            </div>
-            <div class='form-check form-check-inline'>
-              <input class='form-check-input' type='checkbox' id='inlineCheckbox2' name='uppercase'
-              <label class='form-check-label' for='inlineCheckbox2'>uppercase</label>
-            </div>
-            <div class='form-check form-check-inline'>
-              <input class='form-check-input' type='checkbox' id='inlineCheckbox3' name='numbers'
-              <label class='form-check-label' for='inlineCheckbox3'>numbers</label>
-            </div>
-            <div class='form-check form-check-inline'>
-              <input class='form-check-input' type='checkbox' id='inlineCheckbox4' name='symbols'
-              <label class='form-check-label' for='inlineCheckbox4'>symbols</label>
-            </div>
-            <div class="form_btns">
-              <button type="submit" class="btn btn-primary save_new_btn">Save</button>
-              <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
-            </div>
+          <input type="password" name="password" class="form-control" autocomplete="off">
+          <div class="form_btns">
+            <button type="submit" class="btn btn-primary save_new_btn">Save</button>
+            <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
           </div>
         </form>
       </div>
@@ -111,6 +81,64 @@
           <h2 class="is_empty_msg">You currently have no private passwords.</h2>
         <% } else { %>
           <h2>Your private passwords</h2>
+          <ul class="password_list">
+          <% private.forEach((password) => { %>
+            <li class="password_item" style="background-image: url(//logo.clearbit.com/<%=password.password_url%>)">
+              <div class="hidden">
+                <h3><%=password.password_name%></h3>
+                <div class="password_buttons">
+                  <button><a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit</a></button>
+                  <button class="clipboard_btn" data-toggle="tooltip" title="copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>">Copy</button>
+                  <button type="submit" class="btn btn-primary edit_btn">Edit</button>
+                  <button>Delete</button>
+                </div>
+                <div class="overlay"></div>
+              </div>
+              <!-- EDIT PASSWORD FORM BEGIN -->
+              <div class="edit_password_container">
+                <h2>Edit your password</h2>
+                <form method="POST" action="/api/passwords/<%=password.password_id%>">
+                  <!-- Hidden input field to send password ID from form -->
+                  <input type="hidden">
+                  <!-- Hidden input field to send password ID from form -->
+                  <div class="form_group">
+                    <label for="website">Website</label>
+                    <input type="text" name="website" class="form-control" value="<%=password.password_url%>" required="true">
+                  </div>
+                  <div class="form_group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" value="<%=password.password_name%>" required="true">
+                  </div>
+                  <div class="form_group">
+                    <label for="category">Category</label>
+                    <select name="categories" class="form-select" required="true">
+                      <option value="" selected="selected" disabled hidden>Pick your category</option>
+                      <option value="1">Business</option>
+                      <option value="2">Entertainment</option>
+                      <option value="3">Social</option>
+                      <option value="4">News</option>
+                    </select>
+                  </div>
+                  <div class="form_group">
+                    <label for="login">Log in</label>
+                    <input type="text" name="login" class="form-control" value="<%=password.password_username%>" required="true">
+                  </div>
+                  <div class="form_group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" value="<%=password.password_password%>" required="true" autocomplete="off">
+                  </div>
+                  <div class="form_btns">
+                    <button type="submit" class="btn btn-primary save_btn">Save</button>
+                    <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- EDIT PASSWORD FORM END -->
+
+            </li>
+          <% }) %>
+        </ul>
         <table width="100%">
           <thead>
             <tr>
@@ -197,7 +225,7 @@
         <% if (!organization[0]) { %>
           <h2 class="is_empty_msg">You are not part of any organizations</h2>
         <% } else { %>
-        <h2>Your passwords for <%=organization[0].name%></h2>
+        <h2>Your organization passwords for <%=organization.name%></h2>
         <table width="100%">
           <thead>
             <tr>
@@ -212,7 +240,7 @@
             <% organization.forEach((password) => { %>
 
             <tr>
-              <td id="password_name"><%=password.password_name%></td>
+              <td id="password_name"><%=password.name%></td>
               <td id="password_category"><%=password.password_category%></td>
               <td id="visit_website">
                   <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px; fill:white"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
@@ -238,6 +266,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <script type="module" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/clipboard_copier.js"></script>
+  <script type="text/javascript" src="/scripts/password_list.js"></script>
 
 
 </html>
