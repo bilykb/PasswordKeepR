@@ -6,4 +6,76 @@ html {
   margin: 0;
 }
 
+//Login page layout
+
+#login {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .login_left {
+    background: rgb(218, 228, 235);
+    background-size: 180%;
+    height: 100vh;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 0 3em;
+
+    h1 {
+      z-index: 999;
+      align-self: flex-start;
+    }
+
+    lottie-player {
+      width: 650px !important;
+      height: 650px !important;
+    }
+
+  }
+
+
+  .login_right{
+    width: 45%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    button {
+      background-color: #889ca0;
+      border: 0px;
+      transition: 400ms ease;
+
+      &:hover {
+        background-color:#889ca0;
+      }
+    }
+
+
+    form {
+      box-shadow: 0 0px 25px 0 rgba(74, 74, 74, 0.2);
+      width: 400px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 3em 2em;
+    }
+
+    input, label, button {
+      margin-top: 1em;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+}
 
