@@ -6,10 +6,10 @@
 //All the elements form the form
 const newPassword = document.getElementById('randomPass');
 const passwordLength = document.getElementById('passwordLength');
-const uppercase = document.getElementById('inlineCheckbox2');
-const lowercase = document.getElementById('inlineCheckbox1');
-const numbers = document.getElementById('inlineCheckbox3');
-const symbols = document.getElementById('inlineCheckbox4');
+const uppercase = document.getElementById('uppercaseToggle');
+const lowercase = document.getElementById('lowercaseToggle');
+const numbers = document.getElementById('numberToggle');
+const symbols = document.getElementById('symbolToggle');
 const generate = document.getElementById('generate');
 
 
