@@ -101,7 +101,7 @@
                   <td id="password_name"><%=password.password_name%></td>
                   <td id="password_category"><%=password.password_category%></td>
                   <td id="visit_website">
-                      <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+                      <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px; fill: white;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
                   </td>
                   <td><button class="btn btn-secondary clipboard_btn" data-toggle="tooltip" title="copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>"><svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></td>
                   <td id="password_edit_btn">
@@ -152,7 +152,7 @@
         <% } %>
       </div>
       <!-- PERSONAL PASSWORDS END -->
-      <hr>
+
       <!-- ORGANIZATION PASSWORDS START -->
       <div class="organization_passwords_container">
         <% if (!organization[0]) { %>
@@ -176,7 +176,7 @@
               <td id="password_name"><%=password.name%></td>
               <td id="password_category"><%=password.password_category%></td>
               <td id="visit_website">
-                  <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
+                  <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px; fill:white"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
               </td>
                 <td><button class="btn btn-secondary clipboard_btn" data-toggle="tooltip" title="Copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>"><svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></td>
               <td id="view_btn">
