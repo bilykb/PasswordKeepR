@@ -75,8 +75,8 @@
         </form>
       </div>
 
+      <!-- PERSONAL PASSWORDS BEGIN -->
       <div class="personal_passwords_container">
-
         <% if (!private[0]) { %>
           <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_gcudkx1v.json" background="transparent"  speed="1"  style="width: 300px; height: 300px; align-self: center;"autoplay></lottie-player>
           <h2 style="text-align: center; align-self: center">You currently have no passwords.</h2>
@@ -86,6 +86,7 @@
           <thead>
             <tr>
               <th scope="col">Name</th>
+              <th scope="col"></th>
               <th scope="col">Category</th>
               <th scope="col">Website</th>
               <th scope="col">Copy</th>
@@ -99,6 +100,7 @@
 
                 <tr value="1">
                   <td id="password_name"><%=password.password_name%></td>
+                  <td id="password_img"><img src="//logo.clearbit.com/<%=password.password_url%>" style="width: 2rem"></td>
                   <td id="password_category"><%=password.password_category%></td>
                   <td id="visit_website">
                       <a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit website <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width:20px; height:20px;"><path d="M12 6H6V18H18V12H19.9999L20 20H4V4H12V6Z"></path><path d="M14 3H21V10H19V6.39133L13.8036 11.5878L12.3894 10.1735L17.5629 5H14V3Z"></path></svg></a>
@@ -108,7 +110,6 @@
                       <button type="submit" class="btn btn-primary edit_btn">Edit</button>
 
                       <!-- EDIT PASSWORD FORM BEGIN -->
-
                       <div class="edit_password_container">
                         <h2>Edit your password</h2>
                         <form method="POST" action="/api/passwords/<%=password.password_id%>">
@@ -149,11 +150,9 @@
 
               <% }) %>
           </tbody>
-
         </table>
         <% } %>
       </div>
-
       <!-- PERSONAL PASSWORDS END -->
 
       <!-- ORGANIZATION PASSWORDS START -->
