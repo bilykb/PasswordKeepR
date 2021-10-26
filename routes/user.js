@@ -30,6 +30,7 @@ module.exports = (db) => {
           return;
         }
         req.session["user_id"] = accountInfo.id;
+        req.session["email"] = accountInfo.email;
         res.redirect("/api/passwords");
       })
       .catch((err) => console.log(err));

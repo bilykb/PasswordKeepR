@@ -73,8 +73,11 @@
       </div>
 
       <div class="personal_passwords_container">
-        <h2>Your personal passwords</h2>
-        <% if (private) { %>
+
+        <% if (!private[0]) { %>
+          <h2>You currently have no passwords.</h2>
+        <% } else { %>
+          <h2>Your personal passwords</h2>
         <table width="100%">
           <thead>
             <tr>
@@ -152,7 +155,9 @@
       <!-- ORGANIZATION PASSWORDS START -->
       <div class="organization_passwords_container">
         <h2>Your organization's passwords</h2>
-        <% if (organization) { %>
+        <% if (!organization) { %>
+          <h2>You are not part of any organizations</h2>
+        <% } else { %>
         <table width="100%">
           <thead>
             <tr>
