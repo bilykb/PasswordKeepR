@@ -1,27 +1,13 @@
-// Sass variables
-
-
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
-
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+  background-color: rgb(250, 250, 248) !important;
 }
 
 nav {
-  background-color: white;
+  background-color: rgb(250, 250, 248);
   position: fixed;
   top: 0;
   left: 0;
@@ -30,25 +16,36 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.3);
-
-
+  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
+  z-index: 99;
 }
 
 .content-wrapper {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 2em;
+  justify-content: space-evenly;
+  padding: 0 4.5em;
+  margin-top: 3rem;
+
+  .personal_passwords_container, .organizations_passwords_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .is_empty_msg {
+    align-self: center;
+    text-align: center;
+  }
 
   tbody tr {
-    border-top: 1px solid rgb(99, 99, 99);
-    border-bottom: 1px solid rgb(99, 99, 99);
+    border-top: 1px solid rgb(186, 186, 186);
+    border-bottom: 1px solid rgb(186, 186, 186);
     td {
-      padding: 1em 0
+      padding: 1em 0;
     }
   }
 
@@ -63,7 +60,7 @@ nav {
     right: 0;
     margin: 2em;
     background: linear-gradient(#7C99FF, #41CB99);
-    box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
     transition: 500ms ease;
 
     &:hover {
@@ -83,18 +80,18 @@ nav {
   &:hover {
     opacity: 0.7;
   }
-
 }
 
 .create_new_password_container, .edit_password_container {
   transition: 500ms ease;
   opacity: 0;
   transform: translateX(100%);
-  background-color: white;
+  backdrop-filter: blur(50px);
+  border-left: 0.1rem solid #82878c;
   height: 100vh;
   width: 30rem;
   padding: 4em;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
   z-index: 999;
   top: 0;
@@ -103,6 +100,10 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .form_group {
+    width: 100%;
+  }
 
 
   form {
