@@ -19,7 +19,12 @@ $(() => {
     const $container =  $(".create_new_password_container");
     $container.addClass("in_view");
     const $formFields = $container.find("input, select");
+  })
 
+  // Changes character counter when slider is adjusted
+  $('#passwordLength').on('input', function() {
+    const currentVal = $(this).val();
+    $('#sliderVal').val(currentVal).text(currentVal);
   })
 })
 
