@@ -34,6 +34,7 @@ module.exports = (db) => {
     )
 
       .then((privateData) => {
+        console.log(' in here!')
         const passwordData = { private: privateData.rows };
 
         if (privateData.rows.length <= 0) {
@@ -67,7 +68,7 @@ module.exports = (db) => {
             ...passwordOrg,
             email: req.session.email
           };
-          console.log(userPasswordsTemplateVars);
+          console.log('vars....', userPasswordsTemplateVars);
           res.render("index", userPasswordsTemplateVars);
         });
       })
