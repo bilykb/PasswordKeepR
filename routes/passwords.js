@@ -13,6 +13,8 @@ module.exports = (db) => {
       return;
     }
 
+
+
     db.query(
       `
     SELECT accounts.email AS email,
@@ -35,6 +37,11 @@ module.exports = (db) => {
 
       .then((privateData) => {
         const passwordData = { private: privateData.rows };
+
+        if (privateData.rows.length <= 0) {
+          res.render('index', { ...passwordData, organization: [], email: req.session.email });
+          return;
+        }
         const orgId = privateData.rows[0].organization_id;
 
         db.query(
@@ -60,13 +67,14 @@ module.exports = (db) => {
           userPasswordsTemplateVars = {
             ...passwordData,
             ...passwordOrg,
+            email: req.session.email
           };
           console.log(userPasswordsTemplateVars);
           res.render("index", userPasswordsTemplateVars);
         });
       })
       .catch((err) => {
-        res.status(500).json({ error: err.message });
+        console.log(err)
       });
   });
 
