@@ -1,9 +1,25 @@
+//Import fonts
+@font-face {
+  font-family: 'Kobe';
+  src: url('../public/assets/fonts/Kobe1.1-Regular.woff')
+}
+
+@font-face {
+  font-family: 'Kobe Bold';
+  src: url('../public/assets/fonts/Kobe1.1-Regular.woff')
+}
+
+//Custom styles
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: rgb(250, 250, 248) !important;
+}
+
+h1, h2 {
+  font-family: 'Kobe Regular';
 }
 
 nav {
