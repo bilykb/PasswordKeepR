@@ -112,7 +112,8 @@
           <h2>Your private passwords</h2>
           <ul class="password_list">
           <% private.forEach((password) => { %>
-            <li class="password_item" style="background-image: url(//logo.clearbit.com/<%=password.password_url%>)">
+            <li class="password_item">
+              <div class="background" style="background-image: url(//logo.clearbit.com/<%=password.password_url%>)"></div>
               <div class="hidden">
                 <h3><%=password.password_name%></h3>
                 <div class="password_buttons">
@@ -257,6 +258,21 @@
           <h2 class="is_empty_msg">You are not part of any organizations</h2>
         <% } else { %>
         <h2>Your organization passwords for <%=organization.name%></h2>
+        <ul class="password_list">
+          <% organization.forEach((password) => { %>
+            <li class="password_item">
+              <div class="background" style="background-image: url(//logo.clearbit.com/<%=password.password_url%>)"></div>
+              <div class="hidden">
+                <h3><%=password.password_name%></h3>
+                <div class="password_buttons">
+                  <button><a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit</a></button>
+                  <button class="clipboard_btn" data-toggle="tooltip" title="copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>">Copy</button>
+                </div>
+                <div class="overlay"></div>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
         <table width="100%">
           <thead>
             <tr>

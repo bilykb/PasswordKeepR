@@ -2,6 +2,7 @@
 
 $(() => {
 
+  //Show buttons/name on hover
   $(".hidden").mouseenter(function() {
     $(this).css("opacity", "1");
   }).mouseleave( function() {
