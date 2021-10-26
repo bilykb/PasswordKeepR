@@ -20,11 +20,6 @@ $(() => {
     $container.addClass("in_view");
     const $formFields = $container.find("input, select");
 
-    //This request will be modularized later on
-    $.post('/api/passwords', (data) => {
-      console.log('data.....', data)
-    })
-
   })
 })
 
