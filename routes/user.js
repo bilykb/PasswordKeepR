@@ -4,7 +4,12 @@ const router = express.Router();
 module.exports = (db) => {
   // get login form
   router.get("/login", (req, res) => {
-    res.render("login");
+    if (req.query.error) {
+      console.log('there has been an erorr.....', req.query.error)
+      res.render("login", { error: req.query.error })
+      return;
+    }
+    res.render("login", { error: null });
   });
 
   router.post("/login", (req, res) => {
@@ -23,10 +28,13 @@ module.exports = (db) => {
         [email]
       )
       .then((account) => {
+
         const accountInfo = account.rows[0];
 
-        if (account.rows.length === 0) {
-          res.status(400).redirect("/");
+        if (!accountInfo) {
+          console.log('m in here!')
+          const errorMsg = 'Authentication failed';
+          res.status(400).redirect(`/api/user/login?error=${errorMsg}`);
           return;
         }
         req.session["user_id"] = accountInfo.id;

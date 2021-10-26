@@ -1,13 +1,5 @@
-//Import fonts
-@font-face {
-  font-family: 'Kobe';
-  src: url('../public/assets/fonts/Kobe1.1-Regular.woff')
-}
+//Mixins
 
-@font-face {
-  font-family: 'Kobe Bold';
-  src: url('../public/assets/fonts/Kobe1.1-Regular.woff')
-}
 
 //Custom styles
 body {
@@ -15,10 +7,32 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: rgb(250, 250, 248) !important;
+  background-color: rgb(249, 249, 242) !important;
+
+  &:div {
+    padding: 10em;
+  }
+
 }
 
-h1, h2, h3 {
+.form-floating {
+  width: 100%;
+}
+
+
+@media screen and (max-width: 1000px) {
+  #login {
+    flex-direction: column-reverse;
+
+    .login_left, .login_right {
+      width: 100%;
+    }
+
+  }
+}
+
+
+h1, h2, h3, button {
   font-family: 'Whyte Bold';
 }
 
@@ -38,13 +52,14 @@ nav {
 
 .content-wrapper {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 0 4.5em;
-  margin-top: 3rem;
+  margin-top: 10rem;
+
 
   .personal_passwords_container, .organizations_passwords_container {
     display: flex;
@@ -60,8 +75,10 @@ nav {
   tbody tr {
     border-top: 1px solid rgb(186, 186, 186);
     border-bottom: 1px solid rgb(186, 186, 186);
+
     td {
       padding: 1em 0;
+      text-transform: capitalize;
     }
   }
 

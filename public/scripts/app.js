@@ -10,7 +10,7 @@ $(() => {
   //Close edit form when cancel button is clicked
   $(".cancel_btn").on("click", function() {
     //Reset to hidden state
-    $($(this).parents()[2]).removeClass("in_view");
+    $($(this).parents()[3]).removeClass("in_view");
   })
 
   //Shows the add passord form when the + button is pressed
