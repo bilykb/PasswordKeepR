@@ -79,7 +79,33 @@ module.exports = (db) => {
   });
 
   //Create a new password
-  router.post("/", (req, res) => {});
+  router.post("/", (req, res) => {
+
+    const user_id = req.session.user_id;
+    const passwordId = req.params.id;
+    // console.log(req.body.categories);
+    const queryParams = [
+      req.body.name,
+      req.body.website,
+      req.body.login,
+      req.body.password,
+      req.body.categories,
+      req.session.user_id,
+      req.session.orgId
+    ];
+
+    db.query(`
+    INSERT INTO passwords(name, url, username, password, category_id, user_id, org_id)
+    VALUES($1, $2, $3, $4, $5, $6, $7)
+    RETURNING *`
+    , queryParams)
+    .then((updatedInfo) => updatedInfo.rows[0])
+    .catch((err) => {
+      //console.log("hello");
+      res.status(500).json({ error: err.message });
+    })
+    .then(res.redirect("/api/passwords"));
+  });
 
   //Update a password
   router.post("/:id", (req, res) => {
