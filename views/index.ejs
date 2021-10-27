@@ -84,24 +84,28 @@
             </div>
             <div class='form-inline password-toggles ml-5'>
               <div class='form-check form-switch'>
-                <input class='form-check-input' type='checkbox' id='lowercaseToggle' name='lowercase'
-                <label class='form-check-label' for='lowercaseToggle'>Lowercase</label>
+                <input class='form-check-input' type='checkbox' id='lowercaseToggle' name='lowercase' checked>
+                <label class='form-check-label' for='lowercaseToggle' checked>Lowercase</label>
               </div>
               <div class='form-check form-switch'>
-                <input class='form-check-input' type='checkbox' id='uppercaseToggle' name='uppercase'
-                <label class='form-check-label' for='uppercaseToggle'>Uppercase</label>
+                <input class='form-check-input' type='checkbox' id='uppercaseToggle' name='uppercase' checked>
+                <label class='form-check-label' for='uppercaseToggle' checked>Uppercase</label>
               </div>
               <div class='form-check form-switch'>
-                <input class='form-check-input' type='checkbox' id='numberToggle' name='numbers'
+                <input class='form-check-input' type='checkbox' id='numberToggle' name='numbers' checked>
                 <label class='form-check-label' for='numberToggle'>Numbers</label>
               </div>
               <div class='form-check form-switch'>
-                <input class='form-check-input' type='checkbox' id='symbolToggle' name='symbols'
+                <input class='form-check-input' type='checkbox' id='symbolToggle' name='symbols' checked>
                 <label class='form-check-label' for='symbolToggle'>Symbols</label>
               </div>
             </div>
           </div>
           <button class='btn btn-outline-secondary btn-lg btn-block full-width' type='button' id ='generate'>Generate!</button>
+          <div class='form-check form-switch org-toggle'>
+            <input class='form-check-input' type='checkbox' id='orgOption' name='organization'>
+            <label class='form-check-label' for='symbolToggle'>Organization</label>
+          </div>
             <div class="form_btns">
               <button type="submit" class="btn btn-primary save_new_btn">Save</button>
               <button type="button" class="btn btn-danger cancel_btn">Cancel</button>
