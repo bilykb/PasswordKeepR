@@ -1,6 +1,8 @@
 /******  LAYOUT ANIMATIONS *******/
-const tl = gsap.timeline();
 
+//Intro animation
+
+const tl = gsap.timeline();
 
   const introAnimation = function() {
     const toAnimate = [];
@@ -52,12 +54,33 @@ const tl = gsap.timeline();
     }, 3)
   }
 
-
-    if (!sessionStorage.getItem("isVisited")) {
-      console.log('in here1')
+  if (!sessionStorage.getItem("isVisited")) {
       introAnimation();
     };
     sessionStorage.setItem('isVisited', 'true');
+
+  //Sidebar animations
+  export function animateSideBarIn(element) {
+    const tween = gsap.to(element, {
+      opacity: 1,
+      x: 0,
+      ease: 'Expo.easeOut',
+      duration: 2,
+    })
+    $(".viewport_overlay").removeClass("is_hidden");
+  }
+
+  export function animateSideBarOut(element) {
+    const tween = gsap.to(element, {
+      opacity: 0,
+      x: '100%',
+      ease: 'Expo.easeOut',
+      duration: 2,
+    })
+    $(".viewport_overlay").removeClass("is_hidden");
+  }
+
+
 
 
 
