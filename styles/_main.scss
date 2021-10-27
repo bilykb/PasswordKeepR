@@ -31,6 +31,19 @@ nav {
   justify-content: space-between;
   align-items: center;
   z-index: 99;
+  color: $cream;
+
+  div:nth-of-type(1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  lottie-player {
+    width: 4rem !important;
+    height: 4rem !important;
+    z-index: 99999 !important;
+  }
 
 
   .background {
