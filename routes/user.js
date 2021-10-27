@@ -32,13 +32,13 @@ module.exports = (db) => {
         const accountInfo = account.rows[0];
 
         if (!accountInfo) {
-          console.log('m in here!')
           const errorMsg = 'Authentication failed';
           res.status(400).redirect(`/api/user/login?error=${errorMsg}`);
           return;
         }
         req.session["user_id"] = accountInfo.id;
         req.session["email"] = accountInfo.email;
+        req.session["org_id"] = accountInfo.organization_id
         res.redirect("/api/passwords");
       })
       .catch((err) => console.log(err));
