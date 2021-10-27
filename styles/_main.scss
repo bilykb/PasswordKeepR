@@ -34,7 +34,11 @@ body {
 
 
 h1, h2, h3, h4 button {
-  font-family: 'Whyte Bold';
+  font-family: $fontBold;
+}
+
+h1, h2 {
+  text-transform: uppercase;
 }
 
 h2, h2, h3, h4, h5, h6, p, span {
@@ -124,15 +128,15 @@ nav {
   .create_new_password  {
     border: 0px;
     border-radius: 50%;
-    width: 4em;
-    height: 4em;
+    width: 5em;
+    height: 5em;
     padding: 0;
     position: fixed;
     bottom: 0;
     right: 0;
     margin: 2em;
-    background: linear-gradient(#7C99FF, #41CB99);
-    box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
+    background: $gradient;
+    box-shadow: $shadow;
     transition: 500ms ease;
 
     &:hover {
@@ -143,7 +147,7 @@ nav {
 
 #visit_website a {
   text-decoration: none;
-  color: white;
+  color: $cream;
   background-color: #6c757d;
   padding: .8rem .9rem;
   border-radius: .25rem;
@@ -160,11 +164,10 @@ nav {
   transform: translateX(100%);
   background: $gradient;
   backdrop-filter: blur(50px);
-  border-left: 0.1rem solid #82878c;
   height: 100vh;
   width: 30rem;
   padding: 4em;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
   position: fixed;
   z-index: 99999;
   top: 0;

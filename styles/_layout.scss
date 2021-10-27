@@ -48,8 +48,8 @@ html {
     button {
       border: 0px;
       transition: 400ms ease;
-      box-shadow: 0 0px 25px 0 rgba(74, 74, 74, 0.4);
-      background: linear-gradient(to right, #725ce3, #41CB99);
+      box-shadow: $shadow;
+      background: $gradient;
 
       &:hover {
         opacity: 0.7;
