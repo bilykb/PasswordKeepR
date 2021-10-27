@@ -1,0 +1,47 @@
+//General styles
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgb(249, 249, 242) !important;
+  position: relative;
+
+  &:div {
+    padding: 10em;
+  }
+
+}
+
+
+h1, h2, h3, h4, button, .btn-primary, .btn-secondary, .btn-dark, .btn-danger {
+  font-family: $fontBold;
+}
+
+p, span, label, h6, .password_buttons button {
+  font-family: $font;
+}
+
+label {
+  font-size: 20px;
+}
+
+.btn-dark, .btn-secondary {
+  transition: 500ms ease;
+  background-color: $dark !important;
+
+  &:hover {
+    opacity: 0.7;
+    transition: 500ms ease;
+  }
+}
+
+
+h1, h2 {
+  text-transform: uppercase;
+}
+
+h2, h2, h3, h4, h5, h6, p, span {
+  color: rgb(55, 55, 55);
+}

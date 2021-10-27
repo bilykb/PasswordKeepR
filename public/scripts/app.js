@@ -4,17 +4,31 @@ $(() => {
 
   /******  CLICK HANDLERS GO HERE *******/
 
-
   $(".edit_btn").on("click", function(e) {
-    const $container =  $(this).closest("li").next();
-    $container.addClass("in_view");
+    const $container =  $(".edit_password_container")[0];
+    $($container).addClass("in_view");
     animateSideBarIn($container);
+
+    //Replace edit form values with item values
+    let inputs = [];
+    const hiddenInfo = $($($(this)[0]).parents()[1]).find(".hidden_info")[0];
+    const website = $($(hiddenInfo)[0]).find("span");
+    inputs.push($($container).find("input:not(select)"))[0];
+    inputs = inputs[0]
+
+    inputs.each(function(i, el) {
+      if ($($(website[i])[0]).attr('value') !== 'id') {
+        $(el).val($($(website[i])[0]).text())
+      } else {
+        $($container).find("form").attr("action", `/api/passwords/${$($(website[i])[0]).text()}`)
+      }
+    })
   })
 
   //Close edit form when cancel button is clicked
   $(".cancel_btn").on("click", function() {
     //Reset to hidden state
-    const $editContainer = $(this).closest(".edit_password_container");
+    const $editContainer = $(".edit_password_container");
     const $createrContainer = $(this).closest(".create_new_password_container");
     animateSideBarOut($editContainer);
     animateSideBarOut($createrContainer);
