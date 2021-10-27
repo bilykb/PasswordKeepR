@@ -12,7 +12,6 @@ const numbers = document.getElementById('numberToggle');
 const symbols = document.getElementById('symbolToggle');
 const generate = document.getElementById('generate');
 
-
 //HELPER FUNCTIONS
 function getRandomLower() {
 	return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
@@ -41,30 +40,29 @@ const randomFunc = {
 	symbol: getRandomSymbol
 }
 
+generate.addEventListener("click", () => {
 
-generate.addEventListener('click', () => {
-
-  console.log("generate is here......");
 	const length = +passwordLength.value; // converts the length from string to number
 	const hasLower = lowercase.checked;
 	const hasUpper = uppercase.checked;
 	const hasNumber = numbers.checked;
 	const hasSymbol = symbols.checked;
-
   /*
     all of the password generator options are sent to generatePassword function.
     The result is inserted to our password textbox.
   */
-  //console.log(generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length));
-	newPassword.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+
+	newPassword.value = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+
 });
 
 function generatePassword(lower, upper, number, symbol, length) {
+
 	let generatedPassword = '';
 	const typesCount = lower + upper + number + symbol;
 	const optionsArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
 
-	// Doesn't have a selected type
+  // Doesn't have a selected type
 	if(typesCount === 0) {
 		return '';
 	}
@@ -81,8 +79,3 @@ function generatePassword(lower, upper, number, symbol, length) {
 
 	return finalPassword;
 }
-
-//console.log(generatePassword(true,true,true,true,10));
-
-
-//console.log(generatePassword(true,false,true,false,12));
