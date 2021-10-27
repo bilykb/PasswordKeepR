@@ -1,0 +1,11 @@
+.is_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.in_view {
+  transition: 500ms ease;
+  opacity: 1;
+  transform: translateX(0%);
+}
+

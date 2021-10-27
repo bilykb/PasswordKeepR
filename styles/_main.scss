@@ -9,6 +9,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: rgb(249, 249, 242) !important;
+  position: relative;
 
   &:div {
     padding: 10em;
@@ -33,7 +34,11 @@ body {
 
 
 h1, h2, h3, h4 button {
-  font-family: 'Whyte Bold';
+  font-family: $fontBold;
+}
+
+h1, h2 {
+  text-transform: uppercase;
 }
 
 h2, h2, h3, h4, h5, h6, p, span {
@@ -43,7 +48,6 @@ h2, h2, h3, h4, h5, h6, p, span {
 
 
 nav {
-  background-color: rgb(218, 227, 231);
   position: fixed;
   top: 0;
   left: 0;
@@ -57,6 +61,15 @@ nav {
   align-items: center;
   z-index: 99;
 
+  .background {
+    background-color: $main;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 
   .nav_right {
     border-top: .4px solid rgb(210, 206, 206);
@@ -70,6 +83,19 @@ nav {
 
   }
 
+}
+
+.viewport_overlay {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 500ms ease;
 }
 
 .content-wrapper {
@@ -110,16 +136,15 @@ nav {
   .create_new_password  {
     border: 0px;
     border-radius: 50%;
-    width: 4em;
-    height: 4em;
+    width: 5em;
+    height: 5em;
     padding: 0;
     position: fixed;
     bottom: 0;
     right: 0;
     margin: 2em;
-    background: linear-gradient(#7C99FF, #41CB99);
-    box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
-    transition: 500ms ease;
+    background: $gradient;
+    box-shadow: $shadow;
 
     &:hover {
       opacity: 0.7;
@@ -129,7 +154,7 @@ nav {
 
 #visit_website a {
   text-decoration: none;
-  color: white;
+  color: $cream;
   background-color: #6c757d;
   padding: .8rem .9rem;
   border-radius: .25rem;
@@ -144,12 +169,12 @@ nav {
   transition: 500ms ease;
   opacity: 0;
   transform: translateX(100%);
+  background: $cream;
   backdrop-filter: blur(50px);
-  border-left: 0.1rem solid #82878c;
   height: 100vh;
   width: 30rem;
   padding: 4em;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
   position: fixed;
   z-index: 99999;
   top: 0;
@@ -199,10 +224,4 @@ nav {
       margin-top: 5%;
     }
   }
-}
-
-.in_view {
-  transition: 500ms ease;
-  opacity: 1;
-  transform: translateX(0%);
 }
