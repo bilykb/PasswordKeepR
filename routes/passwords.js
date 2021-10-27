@@ -6,8 +6,8 @@ module.exports = (db) => {
   //Get list of passwords dashboard
   router.get("/", (req, res) => {
     const userIdCookie = req.session.user_id;
-    const orgIdCookie = req.session.org_id
-    const emailCookie = req.session.email
+    const orgIdCookie = req.session.org_id;
+    const emailCookie = req.session.email;
     const orderByOption = req.body.sort_by ? req.body.sort_by : `password_name`;
 
     if (!userIdCookie) {
@@ -74,17 +74,17 @@ module.exports = (db) => {
   //Create a new password
   router.post("/", (req, res) => {
 
-    const user_id = req.session.user_id;
-    const passwordId = req.params.id;
-    // console.log(req.body.categories);
+    const userIdCookie = req.session.user_id;
+    const orgIdCookie = req.session.org_id;
+
     const queryParams = [
       req.body.name,
       req.body.website,
       req.body.login,
       req.body.password,
       req.body.categories,
-      req.session.user_id,
-      req.session.orgId
+      userIdCookie,
+      null
     ];
 
     db.query(`
@@ -94,7 +94,6 @@ module.exports = (db) => {
     , queryParams)
     .then((updatedInfo) => updatedInfo.rows[0])
     .catch((err) => {
-      //console.log("hello");
       res.status(500).json({ error: err.message });
     })
     .then(res.redirect("/api/passwords"));
