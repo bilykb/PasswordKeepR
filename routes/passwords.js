@@ -1,4 +1,3 @@
-const bcrypt = require("bcryptjs");
 const express = require("express");
 const router = express.Router();
 
@@ -77,7 +76,12 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
 
     const userIdCookie = req.session.user_id;
-    const orgIdCookie = req.session.org_id;
+    let orgIdCookie = null;
+    const orgToggle = req.body.organization;
+
+    if(orgToggle === 'on') {
+      orgIdCookie = req.session.org_id;
+    }
 
     const queryParams = [
       req.body.name,
@@ -86,7 +90,7 @@ module.exports = (db) => {
       req.body.password,
       req.body.categories,
       userIdCookie,
-      null
+      orgIdCookie
     ];
 
     db.query(`
@@ -94,11 +98,10 @@ module.exports = (db) => {
     VALUES($1, $2, $3, $4, $5, $6, $7)
     RETURNING *`
     , queryParams)
-    .then((updatedInfo) => updatedInfo.rows[0])
+    .then(res.redirect("/api/passwords"))
     .catch((err) => {
       res.status(500).json({ error: err.message });
     })
-    .then(res.redirect("/api/passwords"));
   });
 
   //Update a password
