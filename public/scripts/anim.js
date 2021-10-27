@@ -63,8 +63,9 @@ const tl = gsap.timeline();
   export function animateSideBarIn(element) {
 
     const innerElements = [];
-    const $heading = $(".edit_password_container h2")[0];
-    const $formInputs = $($($heading).next("form")[0]).children();
+
+    const $heading = $(".in_view h2");
+    const $formInputs = $($($heading).next("form")).children();
     innerElements.push($heading, $formInputs)
 
     const timeline = gsap.timeline();
@@ -72,7 +73,7 @@ const tl = gsap.timeline();
       opacity: 1,
       x: 0,
       ease: 'Expo.easeOut',
-      duration: 2,
+      duration: 1,
     });
     timeline.fromTo(innerElements, {
       y: '100%',
@@ -88,6 +89,7 @@ const tl = gsap.timeline();
   }
 
   export function animateSideBarOut(element) {
+    $(".in_view").removeClass("in_view")
     const tween = gsap.to(element, {
       opacity: 0,
       x: '100%',

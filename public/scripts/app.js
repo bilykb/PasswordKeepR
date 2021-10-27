@@ -7,6 +7,7 @@ $(() => {
 
   $(".edit_btn").on("click", function(e) {
     const $container =  $(this).closest("li").next();
+    $container.addClass("in_view");
     animateSideBarIn($container);
   })
 
@@ -24,6 +25,7 @@ $(() => {
   $(".create_new_password").on("click", function() {
     //Un hiddens form
     const $container = $(".create_new_password_container");
+    $container.addClass("in_view");
     animateSideBarIn($container);
     $(".viewport_overlay").removeClass("is_hidden");
     const $formFields = $container.find("input, select");

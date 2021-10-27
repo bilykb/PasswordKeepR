@@ -63,7 +63,8 @@ nav {
 
 
   .background {
-    background-color: $main;
+   background: $main;
+   background-size: 200%;
     height: 100%;
     width: 100%;
     position: absolute;
