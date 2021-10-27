@@ -27,7 +27,7 @@ $(() => {
       opacity: 1,
       y: 0,
       stagger: 0.2,
-      duration: 2,
+      duration: 3,
       ease:'Expo.easeOut'
     }, 1);
     tl.fromTo('.create_new_password', {
@@ -36,10 +36,18 @@ $(() => {
     }, {
       opacity: 1,
       y: 0,
-      duration: 3,
-      stagger: 0.2,
+      duration: 2,
       ease: 'Expo.easeOut'
-    }, 2)
+    }, 2);
+    tl.fromTo('nav h1, .nav_right, .dropdown', {
+      opacity: 0,
+      6: '-100%'
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 2,
+      ease: 'Expo.easeOut'
+    }, 3)
   }
 
   if (!sessionStorage.getItem("isVisited")) {
