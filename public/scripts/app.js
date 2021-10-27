@@ -46,9 +46,9 @@ $(() => {
   })
 
   // Changes character counter when slider is adjusted
-  $('#passwordLength').on('input', function() {
+  $('.rangeInput').on('input', function() {
     const currentVal = $(this).val();
-    $('#sliderVal').val(currentVal).text(currentVal);
+    $('.sliderVal').val(currentVal).text(currentVal);
   })
 })
 
