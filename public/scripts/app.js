@@ -19,9 +19,12 @@ $(() => {
     inputs = inputs[0]
 
     inputs.each(function(i, el) {
-      $(el).val($($(website[i])[0]).text())
+      if ($($(website[i])[0]).attr('value') !== 'id') {
+        $(el).val($($(website[i])[0]).text())
+      } else {
+        $($container).find("form").attr("action", `/api/passwords/${$($(website[i])[0]).text()}`)
+      }
     })
-
   })
 
   //Close edit form when cancel button is clicked

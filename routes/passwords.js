@@ -1,4 +1,3 @@
-const bcrypt = require("bcryptjs");
 const express = require("express");
 const router = express.Router();
 
@@ -58,11 +57,13 @@ module.exports = (db) => {
         )
         .then((orgData) => {
           const passwordOrg = { organization: orgData.rows };
+          console.log(passwordOrg);
           userPasswordsTemplateVars = {
             ...passwordData,
             ...passwordOrg,
             email: emailCookie
           };
+          console.log("userTemplate", userPasswordsTemplateVars);
           res.render("index", userPasswordsTemplateVars);
         });
       })
@@ -97,11 +98,10 @@ module.exports = (db) => {
     VALUES($1, $2, $3, $4, $5, $6, $7)
     RETURNING *`
     , queryParams)
-    .then((updatedInfo) => updatedInfo.rows[0])
+    .then(res.redirect("/api/passwords"))
     .catch((err) => {
       res.status(500).json({ error: err.message });
     })
-    .then(res.redirect("/api/passwords"));
   });
 
   //Update a password

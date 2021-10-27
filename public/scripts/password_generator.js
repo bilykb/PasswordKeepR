@@ -3,7 +3,7 @@
   based on options : Uppercase, LowerCase, Numbers, Symbols, leangth
 */
 
-//All the elements form the form
+//All the elements form the Add form
 const newPassword = document.getElementById('randomPass');
 const passwordLength = document.getElementById('passwordLength');
 const uppercase = document.getElementById('uppercaseToggle');
@@ -11,6 +11,18 @@ const lowercase = document.getElementById('lowercaseToggle');
 const numbers = document.getElementById('numberToggle');
 const symbols = document.getElementById('symbolToggle');
 const generate = document.getElementById('generate');
+
+
+//All the elements form the Edit form
+const newPasswordEdit = document.getElementById('randomPassEdit');
+const passwordLengthEdit = document.getElementById('passwordLengthEdit');
+const uppercaseEdit = document.getElementById('uppercaseToggleEdit');
+const lowercaseEdit = document.getElementById('lowercaseToggleEdit');
+const numbersEdit = document.getElementById('numberToggleEdit');
+const symbolsEdit = document.getElementById('symbolToggleEdit');
+const generateEdit = document.getElementById('generateEdit');
+
+
 
 //HELPER FUNCTIONS
 function getRandomLower() {
@@ -40,6 +52,7 @@ const randomFunc = {
 	symbol: getRandomSymbol
 }
 
+//Event handler for Add form
 generate.addEventListener("click", () => {
 
 	const length = +passwordLength.value; // converts the length from string to number
@@ -53,6 +66,24 @@ generate.addEventListener("click", () => {
   */
 
 	newPassword.value = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+
+});
+
+//Event handler for Edit form
+generateEdit.addEventListener("click", () => {
+
+	const length = +passwordLengthEdit.value; // converts the length from string to number
+	const hasLower = lowercaseEdit.checked;
+	const hasUpper = uppercaseEdit.checked;
+	const hasNumber = numbersEdit.checked;
+	const hasSymbol = symbolsEdit.checked;
+  /*
+    all of the password generator options are sent to generatePassword function.
+    The result is inserted to our password textbox.
+  */
+  newPasswordEdit.type = "text";
+	newPasswordEdit.value = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+  //console.log("after inserting to password text", newPasswordEdit.value);
 
 });
 
