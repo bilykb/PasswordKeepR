@@ -48,7 +48,6 @@ h2, h2, h3, h4, h5, h6, p, span {
 
 
 nav {
-  background-color: rgb(218, 227, 231);
   position: fixed;
   top: 0;
   left: 0;
@@ -62,6 +61,15 @@ nav {
   align-items: center;
   z-index: 99;
 
+  .background {
+    background-color: $main;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 
   .nav_right {
     border-top: .4px solid rgb(210, 206, 206);
@@ -137,7 +145,6 @@ nav {
     margin: 2em;
     background: $gradient;
     box-shadow: $shadow;
-    transition: 500ms ease;
 
     &:hover {
       opacity: 0.7;
