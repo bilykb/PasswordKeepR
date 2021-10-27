@@ -31,7 +31,6 @@ $(() => {
   $(".cancel_btn").on("click", function() {
     //Reset to hidden state
     const $editContainer = $(".edit_password_container");
-    console.log($editContainer)
     const $createrContainer = $(this).closest(".create_new_password_container");
     animateSideBarOut($editContainer);
     animateSideBarOut($createrContainer);
