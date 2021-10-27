@@ -2,20 +2,6 @@
   background-color: black;
 }
 
-//Custom styles
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: rgb(249, 249, 242) !important;
-  position: relative;
-
-  &:div {
-    padding: 10em;
-  }
-
-}
 
 .form-floating {
   width: 100%;
@@ -30,26 +16,6 @@ body {
     width: 100% !important;
   }
 }
-
-
-h1, h2, h3, h4, button, .btn-primary, .btn-secondary, .btn-dark, .btn-danger {
-  font-family: $fontBold;
-}
-
-.btn-dark, .btn-secondary {
-  background-color: $dark !important;
-}
-
-
-h1, h2 {
-  text-transform: uppercase;
-}
-
-h2, h2, h3, h4, h5, h6, p, span {
-  color: rgb(55, 55, 55);
-}
-
-
 
 
 nav {
@@ -91,6 +57,7 @@ nav {
       button {
         width: 100%;
         display: block;
+        font-size: 1.5rem;
 
       }
 

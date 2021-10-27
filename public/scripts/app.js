@@ -4,11 +4,9 @@ $(() => {
 
   /******  CLICK HANDLERS GO HERE *******/
 
-
   $(".edit_btn").on("click", function(e) {
     const $container =  $(".edit_password_container")[0];
-
-
+    $($container).addClass("in_view");
     animateSideBarIn($container);
 
     //Replace edit form values with item values
