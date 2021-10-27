@@ -5,10 +5,12 @@ const router = express.Router();
 module.exports = (db) => {
   //Get list of passwords dashboard
   router.get("/", (req, res) => {
-    const userCookieId = req.session.user_id;
+    const userIdCookie = req.session.user_id;
+    const orgIdCookie = req.session.org_id
+    const emailCookie = req.session.email
     const orderByOption = req.body.sort_by ? req.body.sort_by : `password_name`;
 
-    if (!userCookieId) {
+    if (!userIdCookie) {
       res.redirect("/user/login");
       return;
     }
@@ -30,18 +32,11 @@ module.exports = (db) => {
     AND passwords.org_id IS NULL
     ORDER BY $2;
     `,
-      [userCookieId, orderByOption]
+      [userIdCookie, orderByOption]
     )
 
       .then((privateData) => {
-        console.log(' in here!')
         const passwordData = { private: privateData.rows };
-
-        if (privateData.rows.length <= 0) {
-          res.render('index', { ...passwordData, organization: [], email: req.session.email });
-          return;
-        }
-        const orgId = privateData.rows[0].organization_id;
 
         db.query(
           `
@@ -59,16 +54,15 @@ module.exports = (db) => {
         WHERE organizations.id = $1
         ORDER BY $2;
         `,
-          [orgId, orderByOption]
+          [orgIdCookie, orderByOption]
         )
         .then((orgData) => {
           const passwordOrg = { organization: orgData.rows };
           userPasswordsTemplateVars = {
             ...passwordData,
             ...passwordOrg,
-            email: req.session.email
+            email: emailCookie
           };
-          console.log('vars....', userPasswordsTemplateVars);
           res.render("index", userPasswordsTemplateVars);
         });
       })
