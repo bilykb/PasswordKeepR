@@ -61,12 +61,29 @@ const tl = gsap.timeline();
 
   //Sidebar animations
   export function animateSideBarIn(element) {
-    const tween = gsap.to(element, {
+
+    const innerElements = [];
+    const $heading = $(".edit_password_container h2")[0];
+    const $formInputs = $($($heading).next("form")[0]).children();
+    innerElements.push($heading, $formInputs)
+
+    const timeline = gsap.timeline();
+    timeline.to(element, {
       opacity: 1,
       x: 0,
       ease: 'Expo.easeOut',
       duration: 2,
-    })
+    });
+    timeline.fromTo(innerElements, {
+      y: '100%',
+      opacity: 0
+    }, {
+      y: 0,
+      opacity: 1,
+      stagger: 0.1,
+      duration: 0.6,
+      ease: Expo.easeout
+    }, 0.2)
     $(".viewport_overlay").removeClass("is_hidden");
   }
 

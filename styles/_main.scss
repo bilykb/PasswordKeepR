@@ -96,7 +96,7 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
-  transition: 2s ease;
+  transition: 500ms ease;
 }
 
 .content-wrapper {
@@ -147,6 +147,7 @@ nav {
     background: $gradient;
     box-shadow: $shadow;
     z-index: 99999;
+    transition: opacity 500ms ease;
 
     &:hover {
       opacity: 0.7;
