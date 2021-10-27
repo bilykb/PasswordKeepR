@@ -75,7 +75,12 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
 
     const userIdCookie = req.session.user_id;
-    const orgIdCookie = req.session.org_id;
+    let orgIdCookie = null;
+    const orgToggle = req.body.organization;
+
+    if(orgToggle === 'on') {
+      orgIdCookie = req.session.org_id;
+    }
 
     const queryParams = [
       req.body.name,
@@ -84,7 +89,7 @@ module.exports = (db) => {
       req.body.password,
       req.body.categories,
       userIdCookie,
-      null
+      orgIdCookie
     ];
 
     db.query(`
