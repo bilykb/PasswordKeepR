@@ -1,8 +1,8 @@
 <nav>
   <h1>Shenanigans</h1>
-  <div class="nav_right">
+  <div class="nav_right" style="display: flex; align-items: center; justify-content: space-between;">
     <% if (email) { %>
-
+      <h6><%=email%></h6>
     <% } %>
 
     <form style="display: inline; margin-left: 1em" class="logout_form" method="POST" action="/api/user/logout">
