@@ -36,6 +36,11 @@ h1, h2, h3, h4, button, .btn-primary, .btn-secondary, .btn-dark, .btn-danger {
   font-family: $fontBold;
 }
 
+.btn-dark, .btn-secondary {
+  background-color: $dark !important;
+}
+
+
 h1, h2 {
   text-transform: uppercase;
 }
@@ -77,11 +82,20 @@ nav {
     border-top: .4px solid rgb(210, 206, 206);
     padding-top: 10px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 
-    button {
-      margin-right: auto;
-      display: block;
+    form {
+      width: 100%;
+
+      button {
+        width: 100%;
+        display: block;
+
+      }
+
     }
+
 
   }
 
@@ -109,6 +123,7 @@ nav {
   justify-content: space-evenly;
   padding: 5em 4.5em;
   margin-left: 350px;
+  max-width: 1665px;
 
   .personal_passwords_container, .organization_passwords_container {
     display: flex;

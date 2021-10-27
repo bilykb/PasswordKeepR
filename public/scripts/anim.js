@@ -54,6 +54,8 @@ const tl = gsap.timeline();
     }, 3)
   }
 
+
+
   if (!sessionStorage.getItem("isVisited")) {
       introAnimation();
     };
