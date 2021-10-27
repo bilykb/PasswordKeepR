@@ -2,9 +2,11 @@ $(() => {
 
   // EDIT PASSWORDS CLICK HANDLERS
 
+
   $(".edit_btn").on("click", function(e) {
     const $container =  $(this).closest("li").next();
     $container.addClass("in_view");
+    $(".viewport_overlay").removeClass("is_hidden");
   })
 
   //Close edit form when cancel button is clicked
@@ -12,6 +14,7 @@ $(() => {
     //Reset to hidden state
     $(this).closest(".edit_password_container").removeClass("in_view");
     $(this).closest(".create_new_password_container").removeClass("in_view");
+    $(".viewport_overlay").toggleClass("is_hidden");
   })
 
   //Shows the add passord form when the + button is pressed
@@ -19,6 +22,7 @@ $(() => {
     //Un hiddens form
     const $container = $(".create_new_password_container");
     $container.addClass("in_view");
+    $(".viewport_overlay").removeClass("is_hidden");
     const $formFields = $container.find("input, select");
   })
 
@@ -28,4 +32,5 @@ $(() => {
     $('#sliderVal').val(currentVal).text(currentVal);
   })
 })
+
 
