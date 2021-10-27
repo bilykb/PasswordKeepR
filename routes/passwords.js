@@ -57,11 +57,13 @@ module.exports = (db) => {
         )
         .then((orgData) => {
           const passwordOrg = { organization: orgData.rows };
+          console.log(passwordOrg);
           userPasswordsTemplateVars = {
             ...passwordData,
             ...passwordOrg,
             email: emailCookie
           };
+          console.log("userTemplate", userPasswordsTemplateVars);
           res.render("index", userPasswordsTemplateVars);
         });
       })
