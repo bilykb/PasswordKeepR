@@ -30,7 +30,7 @@ const mySplitText = new SplitText(".intro_logo h1", {
       scaleX: 1,
       duration: 2,
       ease:'Expo.easeOut',
-      delay: 0.7,
+      delay: 1.4,
     });
     tl.fromTo('.intro_logo h1 div', {
       y: '150%'
@@ -43,7 +43,7 @@ const mySplitText = new SplitText(".intro_logo h1", {
     tl.to('.intro_logo h1', {
       opacity: 0,
       duration: 0.3
-    }, 1.1);
+    }, 1.3);
     tl.fromTo(toAnimate, {
       opacity: 0,
       y: '100%',

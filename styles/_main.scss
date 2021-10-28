@@ -70,6 +70,10 @@ nav {
     display: flex;
     flex-direction: column;
 
+    h6 {
+      font-size: 12px;
+    }
+
     form {
       width: 100%;
       margin: 0 !important;
@@ -138,7 +142,7 @@ nav {
     right: 0;
     margin: 2em;
     background: $gradient;
-    background-size: 300% 300%;
+    background-size: 400% 400%;
     background-position: top;
     box-shadow: $shadow;
     z-index: 99999;
