@@ -75,6 +75,8 @@ module.exports = (db) => {
   //Create a new password
   router.post("/", (req, res) => {
 
+    console.log(req.body)
+
     const userIdCookie = req.session.user_id;
     let orgIdCookie = null;
     const orgToggle = req.body.organization;

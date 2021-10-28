@@ -2,9 +2,11 @@ import { animateSideBarIn, animateSideBarOut } from '../scripts/anim.js'
 
 $(() => {
 
+
   /******  CLICK HANDLERS GO HERE *******/
 
   $(".edit_btn").on("click", function(e) {
+
     const $container =  $(".edit_password_container")[0];
     $($container).addClass("in_view");
     animateSideBarIn($container);

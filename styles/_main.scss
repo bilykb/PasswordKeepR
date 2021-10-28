@@ -47,8 +47,9 @@ nav {
 
 
   .background {
-   background: $main;
-   background-size: 200%;
+   background: $gradient;
+   background-size: 400% 400%;
+   background-position: top;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -65,12 +66,11 @@ nav {
 
     form {
       width: 100%;
+      margin: 0 !important;
 
       button {
         width: 100%;
         display: block;
-        font-size: 1.5rem;
-
       }
 
     }
@@ -132,6 +132,8 @@ nav {
     right: 0;
     margin: 2em;
     background: $gradient;
+    background-size: 300% 300%;
+    background-position: top;
     box-shadow: $shadow;
     z-index: 99999;
     transition: opacity 500ms ease;
@@ -181,7 +183,6 @@ nav {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: $main;
     display: flex;
     align-items: center;
     justify-content: center;
