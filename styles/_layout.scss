@@ -24,11 +24,13 @@ html {
   flex-wrap: wrap;
   overflow: hidden;
 
-
+  button {
+    margin-top: 1em;
+  }
 
   .login_left {
     height: 100vh;
-    width: 55%;
+    width: 57%;
     display: flex;
     align-items: flex-start;
     justify-content: start;
@@ -39,15 +41,15 @@ html {
     background-size: 250% 250%;
     background-position: top;
     animation: animateGradient 25s linear;
-    animation-direction: alternate-reverse;
-    backdrop-filter: blur(40px);
-    // background: $gradient;
+    animation-direction: alternate-reverse !important;
+    overflow: visible;
+    z-index: 9999;
 
     h1 {
       font-size: 8.3vw;
       color: $cream;
-      margin-top: auto;
-      margin-bottom: auto;
+      margin: auto auto;
+      overflow: hidden;
       z-index: 1;
 
       span {
@@ -56,14 +58,17 @@ html {
       }
     }
 
-    lottie-player {
-      width: 40vw !important;
-      height: 40vw !important;
+    svg {
+      display: block;
+      display: none;
+      width: 45vw !important;
+      height: 45vw !important;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
+      transform: translate(-50%, -50%) !important;
+      z-index: 4;
+      mix-blend-mode: exclusion;
     }
 
   }
@@ -101,11 +106,13 @@ html {
       padding: 3em 2em;
       background-color: $cream;
       box-shadow: $shadow;
+      background-color: lighten($cream, 5%);
+
+      input {
+        margin-bottom: 1em;
+      }
     }
 
-    input, label, button {
-      margin-top: 1em;
-    }
 
     button {
       width: 100%;

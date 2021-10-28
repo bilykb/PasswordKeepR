@@ -1,8 +1,72 @@
 /******  LAYOUT ANIMATIONS *******/
 
-//Intro animation
 
-const tl = gsap.timeline();
+  gsap.registerPlugin(SplitText, AttrPlugin);
+  const mySplitText = new SplitText(".intro_logo h1, .login_left h1", {
+    type: 'chars'
+  });
+
+  const tl = gsap.timeline();
+  const intro = gsap.timeline();
+
+  const animate = lottie.loadAnimation({
+    container: document.querySelector(".login_left"),
+    renderer: 'svg',
+    autoplay: true,
+    loop:true,
+    paused: true,
+    path: '/assets/lottie/looping_ring.json'
+  });
+  animate.setSpeed(2.5);
+
+  let tick = 2;
+
+  $(() => {
+    const loginAnimation = function() {
+
+      intro.fromTo(".login_left h1 div", {
+        y: '100%',
+      }, {
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        stagger: 0.1,
+      }, 0.5);
+      intro.fromTo(".login_left", {
+        width: '100%'
+      }, {
+        width: '57%',
+        duration: 2,
+        ease: Expo.easeOut
+      }, 2);
+      intro.fromTo(".login_right", {
+        width: '0%'
+      }, {
+        width: '43%',
+        duration: 2,
+        ease: Expo.easeOut,
+        onStart: function() {
+          $(".login_left svg").fadeIn(600);
+        }
+      }, 2)
+      intro.to(animate, {
+        onUpdate: function() {
+          setTimeout(() => {
+            if (tick >= 0.2) {
+              animate.setSpeed(tick)
+            }
+            tick -= 0.01
+          }, 200);
+         },
+        duration: 5,
+        ease: Expo.easeOut
+      })
+    };
+
+    loginAnimation();
+  })
+
+
 
   const introAnimation = function() {
     const toAnimate = [];
@@ -13,13 +77,12 @@ const tl = gsap.timeline();
     const navbackground = $("nav .background")[0];
 
     tl.fromTo(navbackground, {
-      x: '-100%',
+      scaleX: 10,
+      transformOrigin: 'left'
     }, {
-      x: 0,
+      scaleX: 1,
       duration: 2,
       ease:'Expo.easeOut',
-
-
     });
     tl.fromTo(toAnimate, {
       opacity: 0,
@@ -53,7 +116,6 @@ const tl = gsap.timeline();
 
     }, 3)
   }
-
 
 
   if (!sessionStorage.getItem("isVisited")) {
@@ -103,8 +165,6 @@ const tl = gsap.timeline();
 
 window.animateSideBarIn = animateSideBarIn;
 window.animateSideBarOut = animateSideBarOut;
-
-
 
 
 
