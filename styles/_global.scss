@@ -25,6 +25,7 @@ p, span, label, h6, .password_buttons button {
 
 .btn-outline-secondary {
   transition: $transition;
+  border: 0.3px solid $grey;
   &:hover {
     background-color: $dark;
   }
@@ -32,7 +33,7 @@ p, span, label, h6, .password_buttons button {
 
 .btn-dark {
   transition: 500ms ease;
-  background-color: $dark !important;
+  background-color: $dark;
 
   &:hover {
     opacity: 0.7;
