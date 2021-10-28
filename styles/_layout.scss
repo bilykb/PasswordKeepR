@@ -41,13 +41,12 @@ html {
     animation: animateGradient 25s linear;
     animation-direction: alternate-reverse;
     backdrop-filter: blur(40px);
-    // background: $gradient;
 
     h1 {
       font-size: 8.3vw;
       color: $cream;
-      margin-top: auto;
-      margin-bottom: auto;
+      margin: auto auto;
+
       z-index: 1;
 
       span {
@@ -63,7 +62,8 @@ html {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 0;
+      z-index: 4;
+      mix-blend-mode: exclusion;
     }
 
   }
