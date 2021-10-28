@@ -40,7 +40,23 @@ html {
     background-position: top;
     animation: animateGradient 25s linear;
     animation-direction: alternate-reverse;
-    backdrop-filter: blur(40px);
+    overflow: visible;
+
+    .overlay {
+      width: 100%;
+      height: 100%;
+      background: $gradient;
+      background-size: 250% 250%;
+      background-position: bottom;
+      transform: perspective(800px) rotateX(-50deg) rotateY(50deg) skew(-0.06turn, 18deg);
+
+      position: absolute;
+      top: 0;
+      right: -500px;
+      border-radius: 50%;
+      z-index: 999;
+
+    }
 
     h1 {
       font-size: 8.3vw;
