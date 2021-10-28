@@ -136,7 +136,7 @@
                   </div>
                   <h3><%=password.password_name%></h3>
                   <div class="password_buttons">
-                    <button><a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit</a></button>
+                    <button><a target="_blank" style="color: white; text-decoration: none;" href="<%=password.password_url%>">Visit</a></button>
                     <button class="clipboard_btn" data-toggle="tooltip" title="Copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>">Copy</button>
                     <button type="submit" class="edit_btn" value="<%=password.password_id%>">Edit</button>
                     <form method="POST" action="/api/passwords/<%=password.password_id%>/delete">
@@ -165,7 +165,7 @@
               <div class="hidden">
                 <h3><%=password.password_name%></h3>
                 <div class="password_buttons">
-                  <button><a target="_blank" style="color: white; text-decoration: none;" href="https://<%=password.password_url%>">Visit</a></button>
+                  <button><a target="_blank" style="color: white; text-decoration: none;" href="<%=password.password_url%>">Visit</a></button>
                   <button class="clipboard_btn" data-toggle="tooltip" title="Copied!" data-clipboard-action="copy" data-clipboard-text="<%=password.password_password%>">Copy</button>
                 </div>
                 <div class="overlay"></div>

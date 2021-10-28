@@ -19,7 +19,7 @@ $(() => {
       if ($($(website[i])[0]).attr('value') !== 'id') {
         $(el).val($($(website[i])[0]).text())
       } else {
-        $($container).find("form").attr("action", `/api/passwords/:${$($(website[i])[0]).text()}`)
+        $($container).find("form").attr("action", `/api/passwords/${$($(website[i])[0]).text()}`)
       }
     })
   })
