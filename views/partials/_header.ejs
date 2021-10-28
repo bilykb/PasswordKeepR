@@ -1,12 +1,15 @@
 <nav>
-  <h1>Shenanigans</h1>
+  <div>
+    <h1>Anotherkey</h1>
+  </div>
+
   <div class="nav_right" style="display: flex; align-items: center; justify-content: space-between;">
     <% if (email) { %>
       <h6>Logged in as <%=email%></h6>
     <% } %>
 
     <form style="display: inline; margin-left: 1em" class="logout_form" method="POST" action="/api/user/logout">
-      <button class="logout_btn btn btn-secondary" class="btn btn-secondary">
+      <button class="logout_btn btn btn-dark btn-md">
         Log Out
       </button>
     </form>
