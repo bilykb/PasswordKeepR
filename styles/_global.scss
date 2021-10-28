@@ -23,7 +23,14 @@ p, span, label, h6, .password_buttons button {
   font-family: $font;
 }
 
-.btn-dark, .btn-secondary {
+.btn-outline-secondary {
+  transition: $transition;
+  &:hover {
+    background-color: $dark;
+  }
+}
+
+.btn-dark {
   transition: 500ms ease;
   background-color: $dark !important;
 
