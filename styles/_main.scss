@@ -58,7 +58,6 @@ nav {
   }
 
   .nav_right {
-    border-top: .4px solid rgb(210, 206, 206);
     padding-top: 10px;
     width: 100%;
     display: flex;
@@ -123,16 +122,6 @@ nav {
     text-align: center;
   }
 
-  tbody tr {
-    border-top: 1px solid rgb(210, 206, 206);
-    border-bottom: 1px solid rgb(210, 206, 206);
-
-    td {
-      padding: 1em 0;
-      text-transform: capitalize;
-    }
-  }
-
   .create_new_password  {
     border: 0px;
     border-radius: 50%;
@@ -184,10 +173,25 @@ nav {
   align-items: center;
   justify-content: center;
 
-  h2 {
+  header {
     align-self: flex-start;
     margin-bottom: auto;
+    width: 100%;
+    height: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+      margin: auto;
+    }
+
   }
+
 
   .form_group {
     width: 100%;
@@ -202,6 +206,7 @@ nav {
     flex-direction: column;
     width: 100%;
     margin-bottom: auto;
+    margin-top: auto;
 
     label {
       margin-bottom: 0.4em;
