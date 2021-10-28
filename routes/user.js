@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require('bcryptjs')
 
 module.exports = (db) => {
   // get login form
   router.get("/login", (req, res) => {
     if (req.query.error) {
-      console.log('there has been an erorr.....', req.query.error)
+      console.log('there has been an error.....', req.query.error)
       res.render("login", { error: req.query.error })
       return;
     }
@@ -14,6 +15,7 @@ module.exports = (db) => {
 
   router.post("/login", (req, res) => {
     const { email } = req.body;
+    const { masterPassword } = req.body;
 
     if (!email) {
       res.status(400).redirect("/");
@@ -23,10 +25,17 @@ module.exports = (db) => {
       .query(
         `
         SELECT * FROM accounts
-        WHERE email = $1;
+        WHERE email = $1
         `,
-        [email]
+        [email.trim(),]
       )
+      .then(account => {
+        const hashedMain = account.rows[0].main_password
+        if (!bcrypt.compareSync(masterPassword.trim(), hashedMain)) {
+          return res.redirect("?error=Authentication failed - Please try again");
+        }
+        return account
+      })
       .then((account) => {
 
         const accountInfo = account.rows[0];

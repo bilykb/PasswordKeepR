@@ -62,7 +62,7 @@ const tl = gsap.timeline();
     sessionStorage.setItem('isVisited', 'true');
 
   //Sidebar animations
-  export function animateSideBarIn(element) {
+  function animateSideBarIn(element) {
 
     const innerElements = [];
 
@@ -90,7 +90,7 @@ const tl = gsap.timeline();
     $(".viewport_overlay").removeClass("is_hidden");
   }
 
-  export function animateSideBarOut(element) {
+  function animateSideBarOut(element) {
     $(".in_view").removeClass("in_view")
     const tween = gsap.to(element, {
       opacity: 0,
@@ -101,7 +101,8 @@ const tl = gsap.timeline();
     $(".viewport_overlay").removeClass("is_hidden");
   }
 
-
+window.animateSideBarIn = animateSideBarIn;
+window.animateSideBarOut = animateSideBarOut;
 
 
 
