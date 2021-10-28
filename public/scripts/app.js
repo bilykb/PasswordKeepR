@@ -1,5 +1,3 @@
-import { animateSideBarIn, animateSideBarOut } from '../scripts/anim.js'
-
 $(() => {
 
 
@@ -9,7 +7,7 @@ $(() => {
 
     const $container =  $(".edit_password_container")[0];
     $($container).addClass("in_view");
-    animateSideBarIn($container);
+    window.animateSideBarIn($container);
 
     //Replace edit form values with item values
     let inputs = [];
@@ -32,8 +30,8 @@ $(() => {
     //Reset to hidden state
     const $editContainer = $(".edit_password_container");
     const $createrContainer = $(this).closest(".create_new_password_container");
-    animateSideBarOut($editContainer);
-    animateSideBarOut($createrContainer);
+    window.animateSideBarOut($editContainer);
+    window.animateSideBarOut($createrContainer);
     $(".viewport_overlay").toggleClass("is_hidden");
   })
 
@@ -42,7 +40,7 @@ $(() => {
     //Un hiddens form
     const $container = $(".create_new_password_container");
     $container.addClass("in_view");
-    animateSideBarIn($container);
+    window.animateSideBarIn($container);
     $(".viewport_overlay").removeClass("is_hidden");
     const $formFields = $container.find("input, select");
   })

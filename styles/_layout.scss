@@ -108,6 +108,9 @@ html {
       box-shadow: $shadow;
       background-color: lighten($cream, 5%);
 
+      input {
+        margin-bottom: 1em;
+      }
     }
 
 

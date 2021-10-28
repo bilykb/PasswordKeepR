@@ -49,6 +49,10 @@
           <input id="floatingEmail" type="email" name="email" placeholder="Enter your e-mail" class="form-control" required="true" autofocus/>
           <label for="floatingEmail" style="color: grey">Email address</label>
         </div>
+        <div class="form-floating">
+          <input type="password" name="masterPassword" class="form-control" id="floatingPassword" placeholder="Enter your password" required="true"/>
+          <label for='floatingPassword' style="color: grey">Password</label>
+        </div>
         <% if (error) { %>
           <span style="font-weight: bolder; text-align: left; font-size: 12px; color: red; width: 100%; margin-top: 1em;"><%=error%></span>
         <% } %>
