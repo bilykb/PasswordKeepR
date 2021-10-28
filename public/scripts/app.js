@@ -14,13 +14,12 @@ $(() => {
     const hiddenInfo = $($($(this)[0]).parents()[1]).find(".hidden_info")[0];
     const website = $($(hiddenInfo)[0]).find("span");
 
-    inputs = $($container).find("input").slice(0, 4);
+    inputs = $($container).find("input").slice(0, 5);
     inputs.each(function(i, el) {
       if ($($(website[i])[0]).attr('value') !== 'id') {
-        console.log($(el).val($($(website[i])[0]).text()))
         $(el).val($($(website[i])[0]).text())
       } else {
-        $($container).find("form").attr("action", `/api/passwords/${$($(website[i])[0]).text()}`)
+        $($container).find("form").attr("action", `/api/passwords/:${$($(website[i])[0]).text()}`)
       }
     })
   })
