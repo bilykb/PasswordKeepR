@@ -3,6 +3,17 @@
 //Intro animation
 
 const tl = gsap.timeline();
+gsap.registerPlugin(SplitText);
+const mySplitText = new SplitText(".intro_logo h1", {
+  type: 'chars'
+});
+
+
+
+
+
+
+
 
   const introAnimation = function() {
     const toAnimate = [];
@@ -19,9 +30,20 @@ const tl = gsap.timeline();
       scaleX: 1,
       duration: 2,
       ease:'Expo.easeOut',
-
-
+      delay: 0.7,
     });
+    tl.fromTo('.intro_logo h1 div', {
+      y: '150%'
+    }, {
+      y: 0,
+      duration: 2,
+      ease: 'Expo.easeOut',
+      stagger: 0.1,
+    }, 0.1);
+    tl.to('.intro_logo h1', {
+      opacity: 0,
+      duration: 0.3
+    }, 1.1);
     tl.fromTo(toAnimate, {
       opacity: 0,
       y: '100%',
