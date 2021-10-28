@@ -44,8 +44,8 @@
       <div class="create_new_password_container">
         <h2>Add a new password</h2>
         <form method="POST" action="/api/passwords">
-          <label for="website">Website</label>
-          <input type="text" name="website" class="form-control">
+          <label for="website">Website URL</label>
+          <input type="url" name="website" class="form-control" value="http://">
           <label for="name">Name</label>
           <input type="text" name="name" class="form-control">
           <label for="category">Category</label>
@@ -65,8 +65,8 @@
                 <input type="text" name="password" id='randomPass' class="form-control" autocomplete="off" value=''>
               </div>
               <div class ='form-group mb-2'>
-                <label for='passwordLength'>Password length: <output id='sliderVal'>8</output></label>
-                <input type='range' class='form-range' id='passwordLength' name='passwordLength' list='tickmarks' min='8' max='16' step='1' value='8'>
+                <label for='passwordLength'>Password length: <output class='sliderVal'>12</output></label>
+                <input type='range' class='form-range rangeInput' id='passwordLength' name='passwordLength' list='tickmarks' min='8' max='16' step='1' value='12'>
               </div>
             </div>
             <div class='form-inline password-toggles ml-5'>
