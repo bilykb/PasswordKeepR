@@ -13,9 +13,10 @@ const tl = gsap.timeline();
     const navbackground = $("nav .background")[0];
 
     tl.fromTo(navbackground, {
-      x: '-100%',
+      scaleX: 10,
+      transformOrigin: 'left'
     }, {
-      x: 0,
+      scaleX: 1,
       duration: 2,
       ease:'Expo.easeOut',
 
