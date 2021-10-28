@@ -118,6 +118,10 @@ nav {
   margin-left: 260px;
   max-width: 1665px;
 
+  h2 {
+    align-self: flex-start;
+  }
+
   .personal_passwords_container, .organization_passwords_container {
     display: flex;
     flex-direction: column;

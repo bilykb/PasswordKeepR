@@ -25,8 +25,16 @@ body {
 }
 
 
-h1, h2, h3, h4, button, .btn-primary, .btn-secondary, .btn-dark, .btn-danger, h1 span {
+h1, h3, button, .btn-primary, .btn-secondary, .btn-dark, .btn-danger {
   font-family: $fontBold;
+}
+h2 {
+  font-family: $font;
+  text-transform: uppercase;
+}
+
+h4, h5, h6, span {
+  font-family: 'Neue Haas Unica Regular';
 }
 
 button {
@@ -34,7 +42,7 @@ button {
 }
 
 p, span, label, h6, .password_buttons button {
-  font-family: $font;
+  font-family: 'Neue Haas Unica Regular';
 }
 
 .btn-outline-secondary {
