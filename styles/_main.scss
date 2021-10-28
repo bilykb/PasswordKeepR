@@ -81,11 +81,10 @@ nav {
 }
 
 .viewport_overlay {
-  opacity: 0;
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.7;
   z-index: 999;
   position: absolute;
   top: 0;
@@ -161,8 +160,9 @@ nav {
   transform: translateX(100%);
   background: $cream;
   height: 100vh;
-  width: 30rem;
-  padding: 4em;
+  width: 40rem;
+  max-width: 100vw;
+  padding: 5rem;
   box-shadow: $shadow;
   position: fixed;
   z-index: 99999;
