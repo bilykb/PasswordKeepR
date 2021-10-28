@@ -56,7 +56,7 @@
               animate.setSpeed(tick)
             }
             tick -= 0.01
-          }, 500);
+          }, 200);
          },
         duration: 5,
         ease: Expo.easeOut
@@ -83,7 +83,6 @@
       scaleX: 1,
       duration: 2,
       ease:'Expo.easeOut',
-      delay: 1.4,
     });
     tl.fromTo(toAnimate, {
       opacity: 0,
