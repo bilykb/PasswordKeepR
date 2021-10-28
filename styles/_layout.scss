@@ -24,7 +24,9 @@ html {
   flex-wrap: wrap;
   overflow: hidden;
 
-
+  button {
+    margin-top: 1em;
+  }
 
   .login_left {
     height: 100vh;
@@ -71,13 +73,14 @@ html {
       }
     }
 
-    lottie-player {
+    svg {
+      display: block;
       width: 40vw !important;
       height: 40vw !important;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) !important;
       z-index: 4;
       mix-blend-mode: exclusion;
     }
@@ -117,11 +120,10 @@ html {
       padding: 3em 2em;
       background-color: $cream;
       box-shadow: $shadow;
+      background-color: lighten($cream, 5%);
+
     }
 
-    input, label, button {
-      margin-top: 1em;
-    }
 
     button {
       width: 100%;

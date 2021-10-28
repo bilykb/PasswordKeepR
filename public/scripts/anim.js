@@ -1,18 +1,41 @@
 /******  LAYOUT ANIMATIONS *******/
+$(() => {
 
-//Intro animation
+  gsap.registerPlugin(SplitText, AttrPlugin);
+  const mySplitText = new SplitText(".intro_logo h1", {
+    type: 'chars'
+  });
 
-const tl = gsap.timeline();
-gsap.registerPlugin(SplitText);
-const mySplitText = new SplitText(".intro_logo h1", {
-  type: 'chars'
-});
+  const tl = gsap.timeline();
+  const intro = gsap.timeline();
 
+  const animate = lottie.loadAnimation({
+    container: document.querySelector(".login_left"),
+    renderer: 'svg',
+    autoplay: true,
+    loop:true,
+    path: '/assets/lottie/looping_ring.json'
+  });
+  animate.setSpeed(2.5);
 
+  let tick = 2;
 
+  const loginAnimation = function() {
+    intro.to(animate, {
+      onUpdate: function() {
+        setTimeout(() => {
+          if (tick >= 0.2) {
+            animate.setSpeed(tick)
+          }
+          tick -= 0.01
+        }, 500);
+       },
+      duration: 5,
+      ease: Expo.easeOut
+    })
+  };
 
-
-
+  loginAnimation();
 
 
   const introAnimation = function() {
@@ -42,7 +65,10 @@ const mySplitText = new SplitText(".intro_logo h1", {
     }, 0.1);
     tl.to('.intro_logo h1', {
       opacity: 0,
-      duration: 0.3
+      duration: 0.3,
+      onComplete: function() {
+        $(".intro_logo h1").css("display", "none");
+      }
     }, 1.3);
     tl.fromTo(toAnimate, {
       opacity: 0,
@@ -76,7 +102,6 @@ const mySplitText = new SplitText(".intro_logo h1", {
 
     }, 3)
   }
-
 
 
   if (!sessionStorage.getItem("isVisited")) {
@@ -123,9 +148,7 @@ const mySplitText = new SplitText(".intro_logo h1", {
     })
     $(".viewport_overlay").removeClass("is_hidden");
   }
-
-
-
+});
 
 
 
