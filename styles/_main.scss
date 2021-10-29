@@ -10,7 +10,11 @@
 
 @media screen and (max-width: 1000px) {
   #login {
-    flex-direction: column-reverse;
+    flex-direction: column;
+
+    h1 {
+      font-size: 18vw !important;
+    }
   }
   .login_left, .login_right {
     width: 100% !important;
@@ -124,16 +128,18 @@ nav {
   margin-left: 260px;
   max-width: 1665px;
 
-  h2 {
-    align-self: flex-start;
-  }
-
   .personal_passwords_container, .organization_passwords_container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+
+    h1 {
+      font-size: 3rem;
+      font-family: $font;
+    }
+
   }
 
   .organization_passwords_container {
@@ -143,6 +149,8 @@ nav {
   .is_empty_msg {
     align-self: center;
     text-align: center;
+    font-size: 3rem;
+    font-family: $font;
   }
 
   .create_new_password  {
@@ -211,11 +219,14 @@ nav {
     align-items: center;
     justify-content: center;
 
-    h2 {
+    h1 {
       margin: auto;
-    }
+      position: relative;
+      font-family: $font;
 
+    }
   }
+
 
 
   .form_group {
@@ -232,6 +243,10 @@ nav {
     width: 100%;
     margin-bottom: auto;
     margin-top: auto;
+
+    input, select {
+      margin-bottom: 2em;
+    }
 
     label {
       margin-bottom: 0.4em;

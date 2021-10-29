@@ -54,7 +54,7 @@
       <!-- ADD NEW PASSWORD FORM -->
       <div class="create_new_password_container">
         <header>
-          <h2>Add a new password</h2>
+          <h1>Add a new password</h1>
         </header>
         <form method="POST" action="/passwords">
           <label for="website">Website URL</label>
@@ -119,9 +119,9 @@
       <div class="personal_passwords_container">
         <% if (!private[0]) { %>
           <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_gcudkx1v.json" background="transparent"  speed="1"  style="width: 300px; height: 300px; align-self: center;"autoplay></lottie-player>
-          <h2 class="is_empty_msg">You currently have no private passwords.</h2>
+          <h1 class="is_empty_msg">You currently have no private passwords.</h1>
         <% } else { %>
-          <h2>Your private passwords</h2>
+          <h1>Your private passwords</h1>
           <ul class="password_list">
           <% private.forEach((password) => { %>
             <li class="password_item">
@@ -157,9 +157,9 @@
       <!-- ORGANIZATION PASSWORDS START -->
       <div class="organization_passwords_container">
         <% if (!org) { %>
-          <h2 class="is_empty_msg">You are not part of any organizations</h2>
+          <h1 class="is_empty_msg">You are not part of any organizations</h1>
         <% } else { %>
-        <h2>Your organization passwords for <%=org.name%></h2>
+        <h1>Your organization passwords for <%=org.name%></h1>
         <ul class="password_list">
           <% organization.forEach((password) => { %>
             <li class="password_item">

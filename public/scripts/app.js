@@ -28,6 +28,7 @@ $(() => {
 
   //Close edit form when cancel button is clicked
   $(".cancel_btn").on("click", function() {
+    $("header h2").removeClass("with_line");
     //Reset to hidden state
     const $editContainer = $(".edit_password_container");
     const $createrContainer = $(this).closest(".create_new_password_container");
@@ -38,7 +39,7 @@ $(() => {
 
   //Shows the add passord form when the + button is pressed
   $(".create_new_password").on("click", function() {
-    console.log(' in here babes!!')
+    $("header h1").addClass("with_line");
     //Un hiddens form
     const $container = $(".create_new_password_container");
     $container.addClass("in_view");

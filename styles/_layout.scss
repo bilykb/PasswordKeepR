@@ -56,7 +56,7 @@ html {
     z-index: 9999;
 
     h1 {
-      font-size: 8.3vw;
+      font-size: 8.5vw;
       color: $cream;
       margin: auto auto;
       overflow: hidden;
@@ -115,8 +115,9 @@ html {
       box-shadow: $shadow;
 
       h2 {
-        font-family: 'Neue Haas Unica Regular';
-        text-transform: none;
+        font-family: 'Neue Haas Unica Bold' !important;
+        text-transform: none !important;
+        margin-bottom: 2em !important;
       }
 
       .form-control:focus, .form-control:active {
