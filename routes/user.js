@@ -54,8 +54,8 @@ module.exports = (db) => {
 
   router.post('/register', (req, res) => {
     const { regEmail } = req.body;
-    console.log('regEmail....', regEmail);
-    const { regMasterPassword } = req.body;
+    const regMasterPassword = bcrypt.hashSync(req.body.regMasterPassword, 12);
+
     if (!regEmail) {
       res.status(400).redirect("/");
     }
@@ -63,8 +63,7 @@ module.exports = (db) => {
     SELECT * FROM accounts WHERE email = $1
     `, [regEmail])
     .then(account => {
-      if (account.rows.length === 0) {
-        console.log('made it here yayayayay');
+      if (account.rows.length !== 0) {
         return res.redirect('/?error=Email already exists- Please try again!')
       }
       return db.query(`
@@ -72,11 +71,15 @@ module.exports = (db) => {
       VALUES($1, $2, $3)
       RETURNING *
       `
-      ,[regEmail, regMasterPassword, null]) // need to hash the password
+      ,[regEmail, regMasterPassword, null])
       .then(newAccount => {
-        console.log('newAccount....', newAccount)
-        req.session["user_id"] = newAccount.rows[0].id
+        req.session["user_id"] = newAccount.rows[0].id;
+        req.session["email"] = newAccount.rows[0].email;
+        req.session["org_id"] = newAccount.rows[0].organization_id;
+
+        return res.redirect('/passwords')
       })
+      .catch(err => console.error(err))
     })
 
   });
