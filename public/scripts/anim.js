@@ -22,12 +22,10 @@
 
   $(() => {
 
-
     const defaultLogin = function() {
-      intro.from(".login_left svg", {
+      intro.fromTo(animate, {
         opacity: 0,
-        duration: 5,
-        ease: Expo.easeOut,
+      }, {
         onUpdate: function() {
           setTimeout(() => {
             if (tick >= 0.2) {
@@ -36,10 +34,16 @@
             tick -= 0.01
           }, 200);
          },
-      }, 2);
+         opacity: 1,
+        duration: 5,
+        ease: Expo.easeOut,
+        delay: 2
+      })
     }
 
     const loginAnimation = function() {
+
+      $(".login_left svg").css("display", "none");
 
       intro.fromTo(".login_left h1 div", {
         y: '100%',
@@ -60,9 +64,7 @@
         ease: Expo.easeOut,
         onStart: function() {
           $(".login_left svg").fadeIn(600);
-        }
-      }, 2);
-      intro.to(animate, {
+        },
         onUpdate: function() {
           setTimeout(() => {
             if (tick >= 0.2) {
@@ -71,11 +73,10 @@
             tick -= 0.01
           }, 200);
          },
-        duration: 5,
-        ease: Expo.easeOut
-      })
+      }, 2);
     };
     if (!sessionStorage.getItem("loginIntroDone")) {
+      console.log(' in here!!')
       loginAnimation();
     } else {
       defaultLogin();
