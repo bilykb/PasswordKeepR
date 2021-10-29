@@ -131,12 +131,16 @@ html {
       }
     }
 
-    .is_hidden {
+
+
+    .hidden_from_view {
       display: none;
-      opacity: 0;
     }
 
-
+    .is_hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
 
 
     button {

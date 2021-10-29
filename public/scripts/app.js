@@ -1,7 +1,4 @@
  //Remove loading screen once DOM is loaded (prevent content flashing before layout animations)
- $(window).on("load", function() {
-  $("#loader").fadeOut(300);
-});
 
 
 $(() => {
@@ -41,6 +38,7 @@ $(() => {
 
   //Shows the add passord form when the + button is pressed
   $(".create_new_password").on("click", function() {
+    console.log(' in here babes!!')
     //Un hiddens form
     const $container = $(".create_new_password_container");
     $container.addClass("in_view");
@@ -58,15 +56,15 @@ $(() => {
   $('#register').on('click', function() {
     const $loginContainer = $('.login_form');
     const $registerContainer = $('.register_form');
-    $loginContainer.toggleClass("is_hidden");
-    $registerContainer.toggleClass("is_hidden");
+    $loginContainer.toggleClass("hidden_from_view");
+    $registerContainer.toggleClass("hidden_from_view");
   })
 
   $('.register-cancel').on('click', function() {
     const $loginContainer = $('.login_form');
     const $registerContainer = $('.register_form');
-    $loginContainer.toggleClass("is_hidden");
-    $registerContainer.toggleClass("is_hidden");
+    $loginContainer.toggleClass("hidden_from_view");
+    $registerContainer.toggleClass("hidden_from_view");
   })
 })
 

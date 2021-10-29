@@ -1,5 +1,5 @@
 /******  LAYOUT ANIMATIONS *******/
-
+$(() => {
 
   gsap.registerPlugin(SplitText, AttrPlugin);
   const mySplitText = new SplitText(".login_left h1", {
@@ -77,6 +77,10 @@
     }
     sessionStorage.setItem('loginIntroDone', 'true');
   })
+
+
+
+
 
   const introAnimation = function() {
     const toAnimate = [];
@@ -173,8 +177,11 @@
     $(".viewport_overlay").removeClass("is_hidden");
   }
 
+
 window.animateSideBarIn = animateSideBarIn;
 window.animateSideBarOut = animateSideBarOut;
+
+})
 
 
 
