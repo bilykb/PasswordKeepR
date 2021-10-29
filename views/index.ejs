@@ -102,7 +102,7 @@
             </div>
           </div>
           <button class='btn btn-outline-secondary btn-md btn-block full-width' type='button' id ='generate'>Generate!</button>
-          <% if (organization[0]) { %>
+          <% if (org) { %>
           <div class='form-check form-switch org-toggle'>
             <input class='form-check-input' type='checkbox' id='orgOption' name='organization'>
             <label class='form-check-label' for='symbolToggle'>Organization</label>
@@ -156,10 +156,10 @@
 
       <!-- ORGANIZATION PASSWORDS START -->
       <div class="organization_passwords_container">
-        <% if (!organization[0]) { %>
+        <% if (!org) { %>
           <h2 class="is_empty_msg">You are not part of any organizations</h2>
         <% } else { %>
-        <h2>Your organization passwords for <%=organization[0].name%></h2>
+        <h2>Your organization passwords for <%=org.name%></h2>
         <ul class="password_list">
           <% organization.forEach((password) => { %>
             <li class="password_item">
