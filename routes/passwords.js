@@ -65,19 +65,26 @@ module.exports = (db) => {
           `,
             [orgIdCookie, orderByOption]
           )
-          .then((orgData) => {
+          .then(orgData => {
             let organization = orgData.rows.map(row => ({...row, password_password: encryption.decrypt(row.password_password, row.name)}))
-            const passwordOrg = { organization };
+            const passwordOrg = { organization }
 
-            userPasswordsTemplateVars = {
-              ...passwordData,
-              ...passwordOrg,
-              email: emailCookie
-            };
-            res.render("index", userPasswordsTemplateVars);
-          });
+              db.query(`SELECT name FROM organizations WHERE id = $1`, [orgIdCookie])
+              .then(result => {
+                const org = result.rows[0]
+                userPasswordsTemplateVars = {
+                  ...passwordData,
+                  ...passwordOrg,
+                  email: emailCookie,
+                  org
+                };
+                res.render("index", userPasswordsTemplateVars);
+              })
+            }).catch(err => {
+              console.error(err);
+            })
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err)
         });
     });
@@ -93,7 +100,6 @@ module.exports = (db) => {
     WHERE accounts.id = $1;
     `, [userIdCookie])
     .then(password => {
-      console.log('password.....', password);
       const hashedMainPass = password.rows[0].main_password;
       let orgIdCookie = null;
       const orgToggle = req.body.organization;
