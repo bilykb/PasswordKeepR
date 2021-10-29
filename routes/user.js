@@ -6,7 +6,6 @@ module.exports = (db) => {
   // get login form
   router.get("/login", (req, res) => {
     if (req.query.error) {
-      console.log('there has been an error.....', req.query.error)
       res.render("login", { error: req.query.error })
       return;
     }
@@ -42,21 +41,21 @@ module.exports = (db) => {
 
         if (!accountInfo) {
           const errorMsg = 'Authentication failed';
-          res.status(400).redirect(`/api/user/login?error=${errorMsg}`);
+          res.status(400).redirect(`/user/login?error=${errorMsg}`);
           return;
         }
         req.session["user_id"] = accountInfo.id;
         req.session["email"] = accountInfo.email;
         req.session["org_id"] = accountInfo.organization_id
-        res.redirect("/api/passwords");
+        res.redirect("/passwords");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   });
 
   // logout
   router.post("/logout", (req, res) => {
     req.session = null;
-    res.status(200).redirect('/api/user/login');
+    res.status(200).redirect('/user/login');
   });
 
   return router;

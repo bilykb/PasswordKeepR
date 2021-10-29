@@ -51,8 +51,8 @@ const passwordRoutes = require("./routes/passwords");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/user", accountRoutes(db));
-app.use("/api/passwords", passwordRoutes(db));
+app.use("/user", accountRoutes(db));
+app.use("/passwords", passwordRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -61,10 +61,10 @@ app.use("/api/passwords", passwordRoutes(db));
 
 app.get("/", (req, res) => {
   if (!req.session.user_id) {
-    res.redirect("/api/user/login");
+    res.redirect("/user/login");
     return;
   }
-  res.redirect("/api/passwords");
+  res.redirect("/passwords");
 });
 
 app.listen(PORT, () => {
