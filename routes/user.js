@@ -49,6 +49,35 @@ module.exports = (db) => {
       .catch((err) => console.error(err));
   });
 
+  router.post('/register', (req, res) => {
+    const { regEmail } = req.body;
+    console.log('regEmail....', regEmail);
+    const { regMasterPassword } = req.body;
+    if (!regEmail) {
+      res.status(400).redirect("/");
+    }
+    return db.query(`
+    SELECT * FROM accounts WHERE email = $1
+    `, [regEmail])
+    .then(account => {
+      if (account.rows.length === 0) {
+        console.log('made it here yayayayay');
+        return res.redirect('/?error=Email already exists- Please try again!')
+      }
+      return db.query(`
+      INSERT INTO accounts(email, main_password, organization_id)
+      VALUES($1, $2, $3)
+      RETURNING *
+      `
+      ,[regEmail, regMasterPassword, null]) // need to hash the password
+      .then(newAccount => {
+        console.log('newAccount....', newAccount)
+        req.session["user_id"] = newAccount.rows[0].id
+      })
+    })
+
+  });
+
   // logout
   router.post("/logout", (req, res) => {
     req.session = null;
