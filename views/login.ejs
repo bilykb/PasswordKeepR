@@ -57,6 +57,24 @@
           <span style="font-weight: bolder; text-align: left; font-size: 12px; color: red; width: 100%; margin-top: 1em;"><%=error%></span>
         <% } %>
         <button type="submit" class="btn btn-secondary btn-md">Log In</button>
+        <button type="button" class="btn btn-secondary btn-md" id="register">Register</button>
+      </form>
+      <form class="register_form is_hidden" method="POST" action="/user/register" class="form-group">
+        <span>Welcome to keyhole!</span>
+        <h2 style="margin-bottom: 0.4em" >Register for keyhole</h2>
+        <div class="form-floating">
+          <input id="regfloatingEmail" type="email" name="regEmail" placeholder="Enter your e-mail" class="form-control" required="true" autofocus/>
+          <label for="regfloatingEmail" style="color: grey">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" name="regMasterPassword" class="form-control" id="regFloatingPassword" placeholder="Enter your password" required="true"/>
+          <label for='regFloatingPassword' style="color: grey">Password</label>
+        </div>
+        <% if (error) { %>
+          <span style="font-weight: bolder; text-align: left; font-size: 12px; color: red; width: 100%; margin-top: 1em;"><%=error%></span>
+        <% } %>
+        <button type="submit" class="btn btn-secondary btn-md">Register</button>
+        <button type="button" class="btn btn-secondary btn-md register-cancel">Cancel</button>
       </form>
     </div>
   </body>
