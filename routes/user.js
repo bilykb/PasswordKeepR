@@ -29,6 +29,11 @@ module.exports = (db) => {
         [email.trim(),]
       )
       .then(account => {
+        if (!account.rows[0]) {
+            const errorMsg = 'Authentication failed';
+            res.status(400).redirect(`/user/login?error=${errorMsg}`);
+            return;
+        }
         const hashedMain = account.rows[0].main_password
         if (!bcrypt.compareSync(masterPassword.trim(), hashedMain)) {
           return res.redirect("?error=Authentication failed - Please try again");
@@ -36,14 +41,6 @@ module.exports = (db) => {
         return account
       })
       .then((account) => {
-
-        const accountInfo = account.rows[0];
-
-        if (!accountInfo) {
-          const errorMsg = 'Authentication failed';
-          res.status(400).redirect(`/user/login?error=${errorMsg}`);
-          return;
-        }
         req.session["user_id"] = accountInfo.id;
         req.session["email"] = accountInfo.email;
         req.session["org_id"] = accountInfo.organization_id

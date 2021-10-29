@@ -2,7 +2,7 @@
 
 
   gsap.registerPlugin(SplitText, AttrPlugin);
-  const mySplitText = new SplitText(".intro_logo h1, .login_left h1", {
+  const mySplitText = new SplitText(".login_left h1", {
     type: 'chars'
   });
 
@@ -14,41 +14,16 @@
     renderer: 'svg',
     autoplay: true,
     loop:true,
-    paused: true,
     path: '/assets/lottie/looping_ring.json'
   });
   animate.setSpeed(2.5);
 
   let tick = 2;
 
-  $(() => {
-    const loginAnimation = function() {
-
-      intro.fromTo(".login_left h1 div", {
-        y: '100%',
-      }, {
-        y: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-        stagger: 0.1,
-      }, 0.5);
-      intro.fromTo(".login_left", {
-        width: '100%'
-      }, {
-        width: '57%',
-        duration: 2,
-        ease: Expo.easeOut
-      }, 2);
-      intro.fromTo(".login_right", {
-        width: '0%'
-      }, {
-        width: '43%',
-        duration: 2,
-        ease: Expo.easeOut,
-        onStart: function() {
-          $(".login_left svg").fadeIn(600);
-        }
-      }, 2)
+  $(window).on("load", function() {
+    const defaultLogin = function() {
+      console.log('hi')
+      $(".login_left svg").fadeIn(600);
       intro.to(animate, {
         onUpdate: function() {
           setTimeout(() => {
@@ -59,14 +34,49 @@
           }, 200);
          },
         duration: 5,
-        ease: Expo.easeOut
+        ease: Expo.easeOut,
       })
+    }
+
+    const loginAnimation = function() {
+      intro.fromTo(".login_left h1 div", {
+        y: '100%',
+      }, {
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        stagger: 0.1,
+      }, 0.5);
+      intro.from(".login_left", {
+        width: '100%',
+        duration: 2,
+        ease: Expo.easeOut
+      }, 2)
+      intro.from(".login_right", {
+        width: '0%',
+        duration: 2,
+        ease: Expo.easeOut,
+        onStart: function() {
+          $(".login_left svg").fadeIn(600);
+        },
+        onUpdate: function() {
+          setTimeout(() => {
+            if (tick >= 0.2) {
+              animate.setSpeed(tick)
+            }
+            tick -= 0.01
+          }, 200);
+         },
+      }, 2);
     };
-
-    loginAnimation();
+    if (!sessionStorage.getItem("loginIntroDone")) {
+      console.log(' in here!!')
+      loginAnimation();
+    } else {
+      defaultLogin();
+    }
+    sessionStorage.setItem('loginIntroDone', 'true');
   })
-
-
 
   const introAnimation = function() {
     const toAnimate = [];

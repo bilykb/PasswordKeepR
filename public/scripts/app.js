@@ -1,5 +1,10 @@
-$(() => {
+ //Remove loading screen once DOM is loaded (prevent content flashing before layout animations)
+ $(window).on("load", function() {
+  $("#loader").fadeOut(300);
+});
 
+
+$(() => {
 
   /******  CLICK HANDLERS GO HERE *******/
 
