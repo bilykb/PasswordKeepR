@@ -78,7 +78,7 @@ module.exports = (db) => {
           });
         })
         .catch((err) => {
-          console.log(err)
+          console.error(err)
         });
     });
   });
@@ -120,7 +120,7 @@ module.exports = (db) => {
       VALUES($1, $2, $3, $4, $5, $6, $7)
       RETURNING *`
       , queryParams)
-      .then(res.redirect("/api/passwords"))
+      .then(res.redirect("/passwords"))
       .catch((err) => {
         res.status(500).json({ error: err.message });
       })
@@ -169,7 +169,7 @@ module.exports = (db) => {
       .catch((err) => {
         res.status(500).json({ error: err.message });
       })
-      .then(res.redirect("/api/passwords"));
+      .then(res.redirect("/passwords"));
     });
   });
 
