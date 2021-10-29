@@ -22,7 +22,6 @@ $(() => {
 
   $(window).on("load", function() {
     const defaultLogin = function() {
-      console.log('hi')
       $(".login_left svg").fadeIn(600);
       intro.to(animate, {
         onUpdate: function() {
