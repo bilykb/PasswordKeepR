@@ -69,7 +69,6 @@ $(() => {
       }, 2);
     };
     if (!sessionStorage.getItem("loginIntroDone")) {
-      console.log(' in here!!')
       loginAnimation();
     } else {
       defaultLogin();
