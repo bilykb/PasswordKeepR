@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs')
 
 module.exports = (db) => {
-  // get login form
+
   router.get("/login", (req, res) => {
     if (req.query.error) {
       res.render("login", { error: req.query.error })
@@ -41,6 +41,8 @@ module.exports = (db) => {
         return account
       })
       .then((account) => {
+        const accountInfo = account.rows[0]
+
         req.session["user_id"] = accountInfo.id;
         req.session["email"] = accountInfo.email;
         req.session["org_id"] = accountInfo.organization_id
@@ -68,11 +70,12 @@ module.exports = (db) => {
       VALUES($1, $2, $3)
       RETURNING *
       `
-      ,[regEmail, regMasterPassword, null])
+      ,[regEmail.trim(), regMasterPassword, null])
       .then(newAccount => {
-        req.session["user_id"] = newAccount.rows[0].id;
-        req.session["email"] = newAccount.rows[0].email;
-        req.session["org_id"] = newAccount.rows[0].organization_id;
+        const newAccountInfo = newAccount.rows[0];
+        req.session["user_id"] = newAccountInfo.id;
+        req.session["email"] = newAccountInfo.email;
+        req.session["org_id"] = newAccountInfo.organization_id;
 
         return res.redirect('/passwords')
       })
