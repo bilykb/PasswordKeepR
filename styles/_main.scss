@@ -106,6 +106,12 @@ nav {
   transition: 500ms ease;
 }
 
+.is_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+
 .content-wrapper {
   width: calc(100vw - 260px);
   height: 100%;
