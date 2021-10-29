@@ -30,7 +30,6 @@ module.exports = (db) => {
       )
       .then(account => {
         if (!account.rows[0]) {
-          const accountInfo = account.rows[0];
             const errorMsg = 'Authentication failed';
             res.status(400).redirect(`/user/login?error=${errorMsg}`);
             return;

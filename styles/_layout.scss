@@ -59,8 +59,8 @@ html {
     }
 
     svg {
+      opacity: 1;
       display: block;
-      display: none;
       width: 45vw !important;
       height: 45vw !important;
       position: absolute;
@@ -74,7 +74,7 @@ html {
   }
 
   .login_right{
-    width: 45%;
+    width: 43%;
     height: 100vh;
     display: flex;
     align-items: center;
