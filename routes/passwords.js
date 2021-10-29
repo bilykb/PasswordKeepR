@@ -85,17 +85,15 @@ module.exports = (db) => {
 
   //Create a new password
   router.post("/", (req, res) => {
-
-
     const userIdCookie = req.session.user_id;
 
     db.query(`
     SELECT main_password, organization_id, organizations.name FROM accounts
-    JOIN organizations ON accounts.organization_id = organizations.id
+    LEFT JOIN organizations ON accounts.organization_id = organizations.id
     WHERE accounts.id = $1;
     `, [userIdCookie])
     .then(password => {
-      const organizationName = password.rows[0].name;
+      console.log('password.....', password);
       const hashedMainPass = password.rows[0].main_password;
       let orgIdCookie = null;
       const orgToggle = req.body.organization;
@@ -103,7 +101,9 @@ module.exports = (db) => {
       if(orgToggle === 'on') {
         orgIdCookie = req.session.org_id;
       }
-      const keyConditional = orgIdCookie ? organizationName : hashedMainPass;
+
+      // if orgIdCookie is truthy, sets keyConditional as the organization name (password.rows[0].name), else its the hashed main password
+      const keyConditional = orgIdCookie ? password.rows[0].name : hashedMainPass;
 
       const queryParams = [
         req.body.name,
