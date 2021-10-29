@@ -20,12 +20,11 @@
 
   let tick = 2;
 
-  $(() => {
-
+  $(window).on("load", function() {
     const defaultLogin = function() {
-      intro.fromTo(animate, {
-        opacity: 0,
-      }, {
+      console.log('hi')
+      $(".login_left svg").fadeIn(600);
+      intro.to(animate, {
         onUpdate: function() {
           setTimeout(() => {
             if (tick >= 0.2) {
@@ -34,17 +33,12 @@
             tick -= 0.01
           }, 200);
          },
-         opacity: 1,
         duration: 5,
         ease: Expo.easeOut,
-        delay: 2
       })
     }
 
     const loginAnimation = function() {
-
-      $(".login_left svg").css("display", "none");
-
       intro.fromTo(".login_left h1 div", {
         y: '100%',
       }, {
@@ -83,9 +77,6 @@
     }
     sessionStorage.setItem('loginIntroDone', 'true');
   })
-
-
-
 
   const introAnimation = function() {
     const toAnimate = [];

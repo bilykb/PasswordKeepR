@@ -6,7 +6,6 @@
 
 $(() => {
 
-
   /******  CLICK HANDLERS GO HERE *******/
 
   $(".edit_btn").on("click", function(e) {
