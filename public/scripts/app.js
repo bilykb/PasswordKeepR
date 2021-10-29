@@ -49,6 +49,20 @@ $(() => {
     const currentVal = $(this).val();
     $('.sliderVal').val(currentVal).text(currentVal);
   })
+
+  $('#register').on('click', function() {
+    const $loginContainer = $('.login_form');
+    const $registerContainer = $('.register_form');
+    $loginContainer.toggleClass("is_hidden");
+    $registerContainer.toggleClass("is_hidden");
+  })
+
+  $('.register-cancel').on('click', function() {
+    const $loginContainer = $('.login_form');
+    const $registerContainer = $('.register_form');
+    $loginContainer.toggleClass("is_hidden");
+    $registerContainer.toggleClass("is_hidden");
+  })
 })
 
 
