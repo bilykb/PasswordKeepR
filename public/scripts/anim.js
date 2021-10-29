@@ -185,5 +185,3 @@ window.animateSideBarOut = animateSideBarOut;
 
 
 
-
-
