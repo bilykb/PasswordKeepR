@@ -1,5 +1,6 @@
 /******  LAYOUT ANIMATIONS *******/
-$(() => {
+$(document).ready(function() {
+
 
   gsap.registerPlugin(SplitText, AttrPlugin);
   const mySplitText = new SplitText(".login_left h1", {
@@ -20,8 +21,11 @@ $(() => {
 
   let tick = 2;
 
+
+
   $(window).on("load", function() {
     const defaultLogin = function() {
+      console.log('hi')
       $(".login_left svg").fadeIn(600);
       intro.to(animate, {
         onUpdate: function() {
@@ -69,22 +73,20 @@ $(() => {
       }, 2);
     };
     if (!sessionStorage.getItem("loginIntroDone")) {
+      console.log(' in here!!')
       loginAnimation();
     } else {
       defaultLogin();
     }
     sessionStorage.setItem('loginIntroDone', 'true');
+
   })
-
-
-
-
 
   const introAnimation = function() {
     const toAnimate = [];
-    const heading1 = toAnimate.push($('.personal_passwords_container h2')[0]);
+    const heading1 = toAnimate.push($('.personal_passwords_container h1')[0]);
     const privateList = toAnimate.push($($('.password_list')[0]).find("li"));
-    const heading2 = toAnimate.push($('.organization_passwords_container h2')[0]);
+    const heading2 = toAnimate.push($('.organization_passwords_container h1')[0]);
     const orgList = toAnimate.push($($('.password_list')[1]).find("li"));
     const navbackground = $("nav .background")[0];
 
@@ -134,6 +136,7 @@ $(() => {
       introAnimation();
     };
     sessionStorage.setItem('isVisited', 'true');
+})
 
   //Sidebar animations
   function animateSideBarIn(element) {
@@ -176,10 +179,7 @@ $(() => {
   }
 
 
+
 window.animateSideBarIn = animateSideBarIn;
 window.animateSideBarOut = animateSideBarOut;
-
-})
-
-
 

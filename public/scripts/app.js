@@ -1,11 +1,13 @@
  //Remove loading screen once DOM is loaded (prevent content flashing before layout animations)
 
-
 $(() => {
+
 
   /******  CLICK HANDLERS GO HERE *******/
 
   $(".edit_btn").on("click", function(e) {
+
+
 
     const $container =  $(".edit_password_container")[0];
     $($container).addClass("in_view");
@@ -29,6 +31,10 @@ $(() => {
   //Close edit form when cancel button is clicked
   $(".cancel_btn").on("click", function() {
     $("header h2").removeClass("with_line");
+
+
+
+
     //Reset to hidden state
     const $editContainer = $(".edit_password_container");
     const $createrContainer = $(this).closest(".create_new_password_container");
