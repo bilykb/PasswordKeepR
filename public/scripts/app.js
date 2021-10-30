@@ -13,7 +13,7 @@ $(() => {
     const $container =  $(".edit_password_container")[0];
     $($container).addClass("in_view");
     window.animateSideBarIn($container);
-
+    window.animateStroke($("#circle .cls-1"))
     //Replace edit form values with item values
     let inputs = [];
     const hiddenInfo = $($($(this)[0]).parents()[1]).find(".hidden_info")[0];
@@ -31,7 +31,6 @@ $(() => {
 
   //Close edit form when cancel button is clicked
   $(".cancel_btn").on("click", function() {
-    $("header h2").removeClass("with_line");
     //Reset to hidden state
     const $editContainer = $(".edit_password_container");
     const $createrContainer = $(this).closest(".create_new_password_container");
@@ -42,7 +41,7 @@ $(() => {
 
   //Shows the add passord form when the + button is pressed
   $(".create_new_password").on("click", function() {
-    $("header h1").addClass("with_line");
+      window.animateStroke($("#circle .cls-1"))
     //Un hiddens form
     const $container = $(".create_new_password_container");
     $container.addClass("in_view");
@@ -50,6 +49,7 @@ $(() => {
     $(".viewport_overlay").removeClass("is_hidden");
     const $formFields = $container.find("input, select");
   })
+
 
   // Changes character counter when slider is adjusted
   $('.rangeInput').on('input', function() {

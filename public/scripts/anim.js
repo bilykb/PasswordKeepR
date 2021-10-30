@@ -1,13 +1,14 @@
 /******  LAYOUT ANIMATIONS *******/
 $(document).ready(function() {
 
-  gsap.registerPlugin(SplitText, AttrPlugin, CSSRulePlugin);
+  gsap.registerPlugin(SplitText, AttrPlugin, CSSRulePlugin, DrawSVGPlugin);
   const mySplitText = new SplitText(".login_left h1", {
     type: 'chars'
   });
 
   const tl = gsap.timeline();
   const intro = gsap.timeline();
+
 
   const animate = lottie.loadAnimation({
     container: document.querySelector(".login_left"),
@@ -186,7 +187,19 @@ $(document).ready(function() {
   }
 
 
+  function animateStroke(element) {
+    gsap.fromTo(element, {
+      drawSVG: '0%'
+    }, {
+      drawSVG: '100%',
+      duration: 4,
+      ease: Power4.easeOut
+    })
+  }
+
+
 
 window.animateSideBarIn = animateSideBarIn;
 window.animateSideBarOut = animateSideBarOut;
+window.animateStroke = animateStroke;
 

@@ -223,7 +223,16 @@ nav {
       margin: auto;
       position: relative;
       font-family: $font;
+    }
 
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      display: block;
+      margin: auto;
     }
   }
 

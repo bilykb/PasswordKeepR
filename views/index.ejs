@@ -38,6 +38,7 @@
 
     <!-- SplitText & AttrPlugin -->
     <script src="/vendor/splitText.min.js" type="text/javascript"></script>
+    <script src="/vendor/DrawSVGPlugin.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/AttrPlugin.min.js" integrity="sha512-X8fziGieKqV5/FdvyC4I/t/+bxSdn8vjJ4dJ6SCoLZ4OJPy28Zh5YYjssf1bsVQ2Wm/ZZIYUXb+PQXblWE/dFw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/CSSRulePlugin.min.js" integrity="sha512-1z2hYE5HWzZW8cAJRhlwT472AGZC3HlJyWYmW3SXG/Qh0S6TFdkYEqJaPwT7eCy9tI4KvwrRVK6IGqtqErpHQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -53,11 +54,12 @@
     <!-- CONTENT WRAPPER BEGIN -->
     <div class="content-wrapper">
       <button class="create_new_password" style="align-self: flex-end"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="15.1191" y1="0.90625" x2="15.1191" y2="29.0937" stroke="white" stroke-width="2"/><line x1="29.0937" y1="16" x2="0.90624" y2="16" stroke="white" stroke-width="2"/></svg></button>
-
       <!-- ADD NEW PASSWORD FORM -->
       <div class="create_new_password_container">
         <header>
           <h1>Add a new password</h1>
+          <svg id="circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 441.19 98.27"><defs><style>.cls-1{fill:none;stroke:#191919;stroke-miterlimit:10;stroke-width:0.4px;}</style></defs><ellipse class="cls-1" cx="220.59" cy="49.13" rx="220.39" ry="48.93"/></svg>
+
         </header>
         <form method="POST" action="/passwords">
           <label for="website">Website URL</label>
