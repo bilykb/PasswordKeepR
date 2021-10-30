@@ -4,6 +4,8 @@
    $("#loader").fadeOut("slow");
  })
 
+
+
 $(() => {
 
 

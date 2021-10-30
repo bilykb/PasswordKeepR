@@ -22,6 +22,7 @@ $(document).ready(function() {
   let tick = 2;
 
   $(window).on("load", function() {
+
     const defaultLogin = function() {
       $(".login_left svg").fadeIn(600);
       intro.to(animate, {
@@ -33,12 +34,16 @@ $(document).ready(function() {
          },
         duration: 5,
         ease: Expo.easeOut,
-      })
+      });
+      intro.to(".disclaimer", {
+        opacity: 1,
+        duration: 2
+      }, 0)
     }
 
     const loginAnimation = function() {
       intro.fromTo(".login_left h1 div", {
-        y: '600',
+        y: '150',
         opacity: 0,
       }, {
         y: 0,
@@ -79,7 +84,11 @@ $(document).ready(function() {
          },
         duration: 5,
         ease: Expo.easeOut,
-      })
+      });
+      intro.to(".disclaimer", {
+        opacity: 1,
+        duration: 2
+      }, 1.8)
     };
     if (!sessionStorage.getItem("loginIntroDone")) {
       loginAnimation();

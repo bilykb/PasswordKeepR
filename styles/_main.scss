@@ -8,7 +8,7 @@
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   #login {
     flex-direction: column;
 
@@ -18,6 +18,13 @@
   }
   .login_left, .login_right {
     width: 100% !important;
+    height: 70vh !important;
+  }
+
+  .login_right{
+    form {
+      box-shadow: none !important;
+    }
   }
 }
 
