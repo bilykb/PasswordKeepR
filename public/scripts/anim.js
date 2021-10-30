@@ -25,7 +25,6 @@ $(document).ready(function() {
 
   $(window).on("load", function() {
     const defaultLogin = function() {
-      console.log('hi')
       $(".login_left svg").fadeIn(600);
       intro.to(animate, {
         onUpdate: function() {
@@ -61,15 +60,7 @@ $(document).ready(function() {
         ease: Expo.easeOut,
         onStart: function() {
           $(".login_left svg").fadeIn(600);
-        },
-        onUpdate: function() {
-          setTimeout(() => {
-            if (tick >= 0.2) {
-              animate.setSpeed(tick)
-            }
-            tick -= 0.01
-          }, 200);
-         },
+        }
       }, 2);
       intro.fromTo(".login_left", 2, {
         backgroundPosition: '100% 100%',
@@ -79,7 +70,19 @@ $(document).ready(function() {
         onComplete: function() {
           $(".login_left").addClass("default_bg_anim")
         }
-      }, 0)
+      }, 0);
+      intro.to(animate, {
+        onUpdate: function() {
+          setTimeout(() => {
+            if (tick >= 0.2) {
+              animate.setSpeed(tick)
+            }
+            tick -= 0.01
+          }, 200);
+         },
+        duration: 5,
+        ease: Expo.easeOut,
+      })
     };
     if (!sessionStorage.getItem("loginIntroDone")) {
       console.log(' in here!!')
