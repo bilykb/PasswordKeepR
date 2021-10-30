@@ -24,6 +24,30 @@ html {
   flex-wrap: wrap;
   overflow: hidden;
 
+  .disclaimer {
+    font-size: 0.9em;
+    position: absolute;
+    margin: 2em;
+    bottom: 0;
+    left: 0;
+    border: 0.5px solid $cream;
+    color: $cream;
+    border-radius: 5px;
+    padding: 1em;
+    width: 360px;
+    height: 120px;
+
+    a {
+      color: $cream;
+      font-family: 'Neue Haas Unica Bold';
+      transition: $transition;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
   button {
     margin-top: 1em;
   }
