@@ -11,7 +11,17 @@ body {
   &:div {
     padding: 10em;
   }
+}
 
+#loader {
+  display: block;
+  z-index: 999999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $cream;
 }
 
 .intro_logo {

@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
 
-  gsap.registerPlugin(SplitText, AttrPlugin);
+  gsap.registerPlugin(SplitText, AttrPlugin, CSSRulePlugin);
   const mySplitText = new SplitText(".login_left h1", {
     type: 'chars'
   });
@@ -71,6 +71,15 @@ $(document).ready(function() {
           }, 200);
          },
       }, 2);
+      intro.fromTo(".login_left", 2, {
+        backgroundPosition: '100% 100%',
+      }, {
+        backgroundPosition: '0% 0%',
+        ease: Linear.easeNone,
+        onComplete: function() {
+          $(".login_left").addClass("default_bg_anim")
+        }
+      }, 0)
     };
     if (!sessionStorage.getItem("loginIntroDone")) {
       console.log(' in here!!')
@@ -128,7 +137,7 @@ $(document).ready(function() {
       duration: 2,
       ease: 'Expo.easeOut',
 
-    }, 3)
+    }, 2.5)
   }
 
 

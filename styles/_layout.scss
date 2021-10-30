@@ -24,19 +24,15 @@ html {
   flex-wrap: wrap;
   overflow: hidden;
 
-  #loader {
-    z-index: 99999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $cream;
-  }
-
   button {
     margin-top: 1em;
   }
+
+  .default_bg_anim {
+    animation: animateGradient 25s linear;
+    animation-direction: alternate-reverse !important;
+  }
+
 
   .login_left {
     height: 100vh;
@@ -50,9 +46,6 @@ html {
     background: $gradient;
     background-size: 250% 250%;
     background-position: top;
-    animation: animateGradient 25s linear;
-    animation-direction: alternate-reverse !important;
-    overflow: visible;
     z-index: 9999;
 
     h1 {
