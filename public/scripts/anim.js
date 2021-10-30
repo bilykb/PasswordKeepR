@@ -1,7 +1,6 @@
 /******  LAYOUT ANIMATIONS *******/
 $(document).ready(function() {
 
-
   gsap.registerPlugin(SplitText, AttrPlugin, CSSRulePlugin);
   const mySplitText = new SplitText(".login_left h1", {
     type: 'chars'
@@ -21,19 +20,15 @@ $(document).ready(function() {
 
   let tick = 2;
 
-
-
   $(window).on("load", function() {
     const defaultLogin = function() {
       $(".login_left svg").fadeIn(600);
       intro.to(animate, {
         onUpdate: function() {
-          setTimeout(() => {
             if (tick >= 0.2) {
               animate.setSpeed(tick)
             }
             tick -= 0.01
-          }, 200);
          },
         duration: 5,
         ease: Expo.easeOut,
@@ -42,10 +37,12 @@ $(document).ready(function() {
 
     const loginAnimation = function() {
       intro.fromTo(".login_left h1 div", {
-        y: '100%',
+        y: '600',
+        opacity: 0,
       }, {
         y: 0,
-        duration: 0.8,
+        opacity: 1,
+        duration: 1,
         ease: "back.out(1.7)",
         stagger: 0.1,
       }, 0.5);
@@ -53,14 +50,15 @@ $(document).ready(function() {
         width: '100%',
         duration: 2,
         ease: Expo.easeOut
-      }, 2)
+      }, 2);
       intro.from(".login_right", {
         width: '0%',
         duration: 2,
         ease: Expo.easeOut,
         onStart: function() {
           $(".login_left svg").fadeIn(600);
-        }
+        },
+        scrub: 2
       }, 2);
       intro.fromTo(".login_left", 2, {
         backgroundPosition: '100% 100%',
@@ -73,19 +71,16 @@ $(document).ready(function() {
       }, 0);
       intro.to(animate, {
         onUpdate: function() {
-          setTimeout(() => {
             if (tick >= 0.2) {
               animate.setSpeed(tick)
             }
             tick -= 0.01
-          }, 200);
          },
         duration: 5,
         ease: Expo.easeOut,
       })
     };
     if (!sessionStorage.getItem("loginIntroDone")) {
-      console.log(' in here!!')
       loginAnimation();
     } else {
       defaultLogin();
