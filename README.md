@@ -1,15 +1,22 @@
-LHL Node Skeleton
-=========
+# Keyhole
+###### version 1.0.0
 
-## Project Setup
+---
 
-The following steps are only for _one_ of the group members to perform.
+###### A [Lighthouse Labs](https://www.lighthouselabs.ca/) project by [Etty Barone](https://github.com/EttyDaniel), [Matt Parisien](https://github.com/mattparisien), and [Brett Bilyk](https://github.com/bilykb)
+###### <span style="color:red">**Beware:  This code was created while studying Web Development at Lighthouse Labs and is _not_ intended for use outside of a learning scenario. Use at your own risk.**</span>
 
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
+---
+## What is Keyhole?
+---
+
+Keyhole is a full stack, multi-page password keeper which utilizes hashing and two way AES 256bit encryption to ensure the secure storage of passwords for each user.
+
+---
+## Summary
+---
+
+This repository contains all the HTML, SASS, jQuery and javascript code created over the course of the Keyhole project while studying at [Lighthouse Labs](https://www.lighthouselabs.ca/). 
 
 
 ## Getting Started
@@ -38,6 +45,16 @@ The following steps are only for _one_ of the group members to perform.
 
 ## Dependencies
 
-- Node 10.x or above
-- NPM 5.x or above
-- PG 6.x
+| **Libraries** |  |
+|---|---|
+| Node 10.x or above | cookie-session ^1.4.0 |
+| NPM 5.x or above| pg ^8.5.0 |
+| pg-native ^3.0.0 | bcryptjs 2.4.3 |
+| chalk ^2.4.2 | crypto ^1.0.1 |
+| dotenv ^2.0.0 | ejs ^2.6.2 |
+| express ^4.17.1 | morgan ^1.9.1 |
+| sass ^1.35.1 | |
+
+## Dev Dependencies
+
+- nodemon ^2.0.10
