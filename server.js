@@ -42,7 +42,7 @@ app.use(
   })
 );
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
