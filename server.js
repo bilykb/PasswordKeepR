@@ -67,6 +67,6 @@ app.get("/", (req, res) => {
   res.redirect("/passwords");
 });
 
-app.listen(process.env.PORT || 8080, () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
